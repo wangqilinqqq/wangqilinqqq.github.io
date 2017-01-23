@@ -851,6 +851,10 @@ pre .javascript .function {
   color: #fff;
   background: #222;
 }
+.btn {
+  background: #fff;
+  color: #000;
+}
 .btn-bar {
   display: block;
   width: 22px;
@@ -1686,7 +1690,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6fff9c;
+  background: #3eb4e7;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2849,4 +2853,8 @@ a.search-result {
   .post-body {
     text-align: justify;
   }
+}
+.post-button .bth {
+  background: #fff !important;
+  color: #000 !important;
 }
