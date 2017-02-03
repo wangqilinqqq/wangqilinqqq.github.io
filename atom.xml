@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-03T06:55:07.492Z</updated>
+  <updated>2017-02-03T07:32:03.278Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>canvans(语法学习)</title>
+    <link href="http://yoursite.com/2017/02/03/canvas/"/>
+    <id>http://yoursite.com/2017/02/03/canvas/</id>
+    <published>2017-02-03T07:31:49.838Z</published>
+    <updated>2017-02-03T07:32:03.278Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="canvans" scheme="http://yoursite.com/categories/canvans/"/>
+    
+    
+      <category term="canvans" scheme="http://yoursite.com/tags/canvans/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Markdown(语法学习)</title>
     <link href="http://yoursite.com/2017/01/22/Markdown(%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0)/"/>
     <id>http://yoursite.com/2017/01/22/Markdown(语法学习)/</id>
     <published>2017-01-22T09:06:50.672Z</published>
-    <updated>2017-02-03T06:55:07.492Z</updated>
+    <updated>2017-02-03T07:24:06.819Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="宗旨"><a href="#宗旨" class="headerlink" title="宗旨"></a>宗旨</h3><p>Markdown 的目标是实现「易读易写」。</p>
 <p>可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到一些既有 text-to-HTML 格式的影响，包括 Setext、atx、Textile、reStructuredText、Grutatext 和 EtText，而最大灵感来源其实是纯文本电子邮件的格式。<br><a id="more"></a><br>总之， Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像<em>强调</em>。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。</p>
@@ -216,6 +234,8 @@
     
       <category term="Markdown" scheme="http://yoursite.com/categories/Markdown/"/>
     
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
     
   </entry>
   
