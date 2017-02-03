@@ -206,6 +206,11 @@ body {
     font-size: 16px;
   }
 }
+body {
+  background-image: url("https://source.unsplash.com/category/nature/1600x900");
+  background-size: cover;
+  background-attachment: fixed;
+}
 h1,
 h2,
 h3,
@@ -1690,7 +1695,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #53ff4d;
+  background: #ffac2b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2857,4 +2862,10 @@ a.search-result {
 .post-button .bth {
   background: #fff !important;
   color: #000 !important;
+}
+.post-category {
+  display: none;
+}
+.site-state-categories {
+  display: none;
 }
