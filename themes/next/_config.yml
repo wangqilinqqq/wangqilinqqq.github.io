@@ -38,7 +38,8 @@ seo: false
 menu:
   home: /
   archives: /archives
-  about: /about
+  #categories: /categories
+  #about: /about
   tags: /tags
   commonweal: /404.html
 
@@ -52,12 +53,12 @@ menu_icons:
   enable: true
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
-  about: user
+  #about: user
   categories: th
-  schedule: calendar
+  #schedule: calendar
   tags: tags
   archives: archive
-  sitemap: sitemap
+  #sitemap: sitemap
   commonweal: heartbeat
 
 
