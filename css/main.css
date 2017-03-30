@@ -183,6 +183,9 @@ th {
   background: #262a30;
   color: #fff;
 }
+.tag-cloud-tags>a {
+  font-size: 18px !important;
+}
 body {
   position: relative;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -1695,7 +1698,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #dff990;
+  background: #0ffe9e;
 }
 .links-of-blogroll {
   font-size: 13px;
