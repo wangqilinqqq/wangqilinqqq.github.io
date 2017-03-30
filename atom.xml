@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-30T08:23:23.675Z</updated>
+  <updated>2017-03-30T10:45:21.069Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,18 +16,72 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Vuex初体验</title>
+    <link href="http://yoursite.com/2017/03/30/vuex%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
+    <id>http://yoursite.com/2017/03/30/vuex初体验/</id>
+    <published>2017-03-30T07:16:46.000Z</published>
+    <updated>2017-03-30T10:45:21.069Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;vue将一个项目分成N多个组件，组件与组件之间相结合，就构成了一个完整的项目，但是当组件足够多的时候，组件与组件之前的通讯将会变得异常复杂、但是用Vuex就会完全不一样、下面这个例子是一个非常简单的例子，在组件A中改变值，组件B中相对应的更新值。</p>
+<h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p>使用<a href="https://wangqilinqqq.github.io/2017/03/30/vue创建项目/" title="title" target="_blank" rel="external">Vue-cli新建项目</a></p>
+<h2 id="安装-vuex"><a href="#安装-vuex" class="headerlink" title="安装 vuex"></a>安装 vuex</h2><blockquote>
+<p>npm install vuex –save</p>
+</blockquote>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>我们的根组件是 App.vue 他下面有2个子组件 button.vue 和 info.vue</p>
+<p><strong>这个是button.vue</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//button.vue</div><div class="line"></div><div class="line">&lt;template&gt;</div><div class="line">	&lt;div&gt;</div><div class="line">		&lt;button&gt;count +1&lt;/button&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">	<span class="built_in">export</span> default &#123;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>这个是info.vue</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//info.vue</div><div class="line"></div><div class="line">&lt;template&gt;</div><div class="line">	&lt;div&gt;</div><div class="line">		&lt;p&gt;count is 0&lt;/p&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line"></div><div class="line">	<span class="built_in">export</span> default &#123;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>然后在我们的根组件中引入子组件</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//App.vue</div><div class="line"></div><div class="line">&lt;template&gt;</div><div class="line">	&lt;div id=<span class="string">"app"</span>&gt;</div><div class="line">		&lt;my-info&gt;&lt;/my-info&gt;</div><div class="line">		&lt;my-botton&gt;&lt;/my-botton&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">	import MyInfo from <span class="string">'./components/info.vue'</span>;</div><div class="line">	import MyButton from <span class="string">'./components/button.vue'</span>;</div><div class="line"></div><div class="line">	<span class="built_in">export</span> default &#123;</div><div class="line">		components: &#123;</div><div class="line">			<span class="string">'my-info'</span>: MyInfo,</div><div class="line">			<span class="string">'my-botton'</span>: MyButton</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>启动应用</p>
+<blockquote>
+<p>npm run dev</p>
+</blockquote>
+<p>浏览器输入 <a href="http://localhost:8080/" target="_blank" rel="external">http://localhost:8080/</a><br><img src="/images/vuex/pic1.png" alt="Alt text"><br>好的 基本已经完成，非常简单的布局，我们现在要做的就是 点击按钮一次，上面的数字也同步更新</p>
+<h2 id="Vuex-Store"><a href="#Vuex-Store" class="headerlink" title="Vuex-Store"></a>Vuex-Store</h2><p><strong>进入我们的目录，在src文件夹，创建一个文件夹名为 store,并新建 index文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//index.js</div><div class="line"></div><div class="line">/*vue模块，最开始引用*/import Vue from <span class="string">'vue'</span>;</div><div class="line">/*引入vuex模块*/import Vuex from <span class="string">'vuex'</span>;</div><div class="line"></div><div class="line">/*应用Vuex*/Vue.use(Vuex)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">const state = &#123;</div><div class="line">	//这里存储着所有需要共享的状态</div><div class="line">	count: 0</div><div class="line">&#125;</div><div class="line"></div><div class="line">const mutations = &#123;</div><div class="line">	//这里是操作状态改变,注意不能直接调用此方法，</div><div class="line">	//需要使用 store.commin(<span class="string">'increment'</span>)-&gt;参数与这里定义的函数名相同</div><div class="line">	increment: state =&gt; state.count++</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">export</span> default new Vuex.Store(&#123;</div><div class="line">	state,</div><div class="line">	mutations</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p><strong>接着创建getters.js文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//此模块主要用于获取状态</div><div class="line"></div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">	<span class="function"><span class="title">getCount</span></span> () &#123;</div><div class="line">		<span class="built_in">return</span> this.<span class="variable">$store</span>.state.count</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>然后在创建actions.js文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//此文件主要用于改变状态</div><div class="line"></div><div class="line"><span class="built_in">export</span> default &#123;</div><div class="line">	increment: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">		this.<span class="variable">$store</span>.commit(<span class="string">'increment'</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>在  main.js 文件中 将 store 绑定在 Vue 实例上，任何地方的组件都可以通过 this.$store 来访问这个对象</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import Vue from <span class="string">'vue'</span></div><div class="line">import store from <span class="string">'./store/'</span> /*引入文件默认是index 所以是缩写了*/</div><div class="line">import App from <span class="string">'./App'</span></div><div class="line"></div><div class="line">const app = new Vue(&#123;</div><div class="line">	el: <span class="string">'#app'</span>,</div><div class="line">	store, /*在这里绑定了之后任何组件都可以通过 this.<span class="variable">$store</span> 来访问里面的属性与方法*/</div><div class="line">	render: h =&gt; h(App)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p><strong>回到info.vue组件在里面使用count</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">	&lt;div&gt;</div><div class="line">		&lt;p&gt;count is &#123;&#123;count&#125;&#125;&lt;/p&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">	import getters from <span class="string">'../store/getters'</span></div><div class="line"></div><div class="line">	<span class="built_in">export</span> default &#123;</div><div class="line">		computed: &#123;</div><div class="line">			count: getters.getCount</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><em>*回到button.vue组件中定义方法</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;template&gt;</div><div class="line">	&lt;div&gt;</div><div class="line">		&lt;button @click=<span class="string">'incrementCount'</span>&gt;count +1&lt;/button&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">	import actions from <span class="string">'../store/actions'</span></div><div class="line"></div><div class="line">	<span class="built_in">export</span> default &#123;</div><div class="line">		methods: &#123;</div><div class="line">			incrementCount: actions.increment</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>然后运行项目</p>
+<blockquote>
+<p>num run dev</p>
+</blockquote>
+<p>  over~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;vue将一个项目分成N多个组件，组件与组件之间相结合，就构成了一个完整的项目，但是当组件足够
+    
+    </summary>
+    
+      <category term="Vuex" scheme="http://yoursite.com/categories/Vuex/"/>
+    
+    
+      <category term="Vuex" scheme="http://yoursite.com/tags/Vuex/"/>
+    
+  </entry>
+  
+  <entry>
     <title>vue创建项目</title>
     <link href="http://yoursite.com/2017/03/30/vue%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
     <id>http://yoursite.com/2017/03/30/vue创建项目/</id>
     <published>2017-03-30T07:16:46.000Z</published>
-    <updated>2017-03-30T08:23:23.675Z</updated>
+    <updated>2017-03-30T10:00:02.886Z</updated>
     
     <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>需要安装node 和 vue-cli 脚手架，node的安装方法多种多样，直接 <a href="https://nodejs.org/en/" title="node官网" target="_blank" rel="external">进入官网</a> 下载</p>
 <p>一. 安装全局vue-cli</p>
 <blockquote>
 <p>npm install vue-cli -g</p>
 </blockquote>
-<p>ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了<br><a id="more"></a><br>二. 创建项目</p>
+<p>ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了<br><a id="more"></a></p>
+<p>二. 创建项目</p>
 <blockquote>
 <p>vue init webpack vue2-demo</p>
 </blockquote>
@@ -71,9 +125,10 @@
     <link href="http://yoursite.com/2017/02/03/Markdown(%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0)/"/>
     <id>http://yoursite.com/2017/02/03/Markdown(语法学习)/</id>
     <published>2017-02-03T08:02:09.872Z</published>
-    <updated>2017-03-30T08:23:19.128Z</updated>
+    <updated>2017-03-30T09:20:54.630Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="宗旨"><a href="#宗旨" class="headerlink" title="宗旨"></a>宗旨</h3><p>Markdown 的目标是实现「易读易写」。</p>
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>-》# <a href="https://vuex.vuejs.org/zh-cn/" title="Title" target="_blank" rel="external">直接看文档</a></p>
+<h3 id="宗旨"><a href="#宗旨" class="headerlink" title="宗旨"></a>宗旨</h3><p>Markdown 的目标是实现「易读易写」。</p>
 <p>可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到一些既有 text-to-HTML 格式的影响，包括 Setext、atx、Textile、reStructuredText、Grutatext 和 EtText，而最大灵感来源其实是纯文本电子邮件的格式。<br><a id="more"></a><br>总之， Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像<em>强调</em>。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。</p>
 <h3 id="兼容-HTML"><a href="#兼容-HTML" class="headerlink" title="兼容 HTML"></a>兼容 HTML</h3><p>Markdown 语法的目标是：成为一种适用于网络的书写语言。</p>
 <p>Markdown 不是想要取代 HTML，甚至也没有要和它相近，它的语法种类很少，只对应 HTML 标记的一小部分。Markdown 的构想不是要使得 HTML 文档更容易书写。在我看来， HTML 已经很容易写了。Markdown 的理念是，能让文档更容易读、写和随意改。HTML 是一种发布的格式，Markdown 是一种书写的格式。就这样，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。</p>
@@ -260,7 +315,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;h3 id=&quot;宗旨&quot;&gt;&lt;a href=&quot;#宗旨&quot; class=&quot;headerlink&quot; title=&quot;宗旨&quot;&gt;&lt;/a&gt;宗旨&lt;/h3&gt;&lt;p&gt;Markdown 的目标是实现「易读易写」。&lt;/p&gt;
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;-》# &lt;a href=&quot;https://vuex.vuejs.org/zh-cn/&quot; title=&quot;Title&quot;&gt;直接看文档&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;宗旨&quot;&gt;&lt;a href=&quot;#宗旨&quot; class=&quot;headerlink&quot; title=&quot;宗旨&quot;&gt;&lt;/a&gt;宗旨&lt;/h3&gt;&lt;p&gt;Markdown 的目标是实现「易读易写」。&lt;/p&gt;
 &lt;p&gt;可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到一些既有 text-to-HTML 格式的影响，包括 Setext、atx、Textile、reStructuredText、Grutatext 和 EtText，而最大灵感来源其实是纯文本电子邮件的格式。&lt;br&gt;
     
     </summary>
