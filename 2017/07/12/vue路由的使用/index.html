@@ -86,33 +86,19 @@
 
 
 
-<meta name="description" content="安装需要安装node 和 vue-cli 脚手架，node的安装方法多种多样，直接 进入官网 下载
-一. 安装全局vue-cli
-
-npm install vue-cli -g
-
-ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了">
+<meta name="description" content="第一步：引入与配置在vue中使用路由的第一步总是引入路由
+1234567891011121314import Vue from &apos;vue&apos;import vueRouter from &apos;vue-router&apos; //引入路由模块import routes from &apos;./router/router&apos; //引入路由配置文件Vue.use(vueRouter) //vue 使用插件const router">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue创建项目">
-<meta property="og:url" content="http://yoursite.com/2017/03/30/vue创建项目/index.html">
+<meta property="og:title" content="vue-router 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/07/12/vue路由的使用/index.html">
 <meta property="og:site_name" content="前端打酱油">
-<meta property="og:description" content="安装需要安装node 和 vue-cli 脚手架，node的安装方法多种多样，直接 进入官网 下载
-一. 安装全局vue-cli
-
-npm install vue-cli -g
-
-ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了">
-<meta property="og:image" content="http://yoursite.com/images/vue-study/code1.png">
-<meta property="og:updated_time" content="2017-03-30T10:00:02.886Z">
+<meta property="og:description" content="第一步：引入与配置在vue中使用路由的第一步总是引入路由
+1234567891011121314import Vue from &apos;vue&apos;import vueRouter from &apos;vue-router&apos; //引入路由模块import routes from &apos;./router/router&apos; //引入路由配置文件Vue.use(vueRouter) //vue 使用插件const router">
+<meta property="og:updated_time" content="2017-07-12T03:18:12.308Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue创建项目">
-<meta name="twitter:description" content="安装需要安装node 和 vue-cli 脚手架，node的安装方法多种多样，直接 进入官网 下载
-一. 安装全局vue-cli
-
-npm install vue-cli -g
-
-ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了">
-<meta name="twitter:image" content="http://yoursite.com/images/vue-study/code1.png">
+<meta name="twitter:title" content="vue-router 学习笔记">
+<meta name="twitter:description" content="第一步：引入与配置在vue中使用路由的第一步总是引入路由
+1234567891011121314import Vue from &apos;vue&apos;import vueRouter from &apos;vue-router&apos; //引入路由模块import routes from &apos;./router/router&apos; //引入路由配置文件Vue.use(vueRouter) //vue 使用插件const router">
 
 
 
@@ -140,13 +126,13 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/30/vue创建项目/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/12/vue路由的使用/"/>
 
 
 
 
 
-  <title> vue创建项目 | 前端打酱油 </title>
+  <title> vue-router 学习笔记 | 前端打酱油 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +255,7 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/30/vue创建项目/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/12/vue路由的使用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="kylin">
@@ -293,7 +279,7 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
             
             
               
-                vue创建项目
+                vue-router 学习笔记
               
             
           </h1>
@@ -308,8 +294,8 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-30T15:16:46+08:00">
-                2017-03-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-12T15:16:46+08:00">
+                2017-07-12
               </time>
             
 
@@ -349,8 +335,8 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/30/vue创建项目/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/30/vue创建项目/" itemprop="commentCount"></span>
+                <a href="/2017/07/12/vue路由的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/12/vue路由的使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -376,31 +362,11 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
       
 
       
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>需要安装node 和 vue-cli 脚手架，node的安装方法多种多样，直接 <a href="https://nodejs.org/en/" title="node官网" target="_blank" rel="external">进入官网</a> 下载</p>
-<p>一. 安装全局vue-cli</p>
-<blockquote>
-<p>npm install vue-cli -g</p>
-</blockquote>
-<p>ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了<br><a id="more"></a></p>
-<p>二. 创建项目</p>
-<blockquote>
-<p>vue init webpack vue2-demo</p>
-</blockquote>
-<p><img src="/images/vue-study/code1.png" alt="Alt text"></p>
-<p>三. 进入到vue2-demo，安装依赖</p>
-<blockquote>
-<p>npm install</p>
-</blockquote>
-<p>四.安装webpack</p>
-<blockquote>
-<p>npm install webpack –save-dev</p>
-</blockquote>
-<p> <strong>-dev</strong> 指的是在生产环节中使用，如果需要在线上环境中使用，就不需要带-dev</p>
-<p>五.本地运行</p>
-<blockquote>
-<p>npm run dev</p>
-</blockquote>
-<p>浏览器输出 <code>http://localhost:8080</code> 即可访问</p>
+        <h2 id="第一步：引入与配置"><a href="#第一步：引入与配置" class="headerlink" title="第一步：引入与配置"></a>第一步：引入与配置</h2><p>在vue中使用路由的第一步总是引入路由</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import Vue from <span class="string">'vue'</span></div><div class="line">import vueRouter from <span class="string">'vue-router'</span> //引入路由模块</div><div class="line">import routes from <span class="string">'./router/router'</span> //引入路由配置文件</div><div class="line"></div><div class="line"></div><div class="line">Vue.use(vueRouter) //vue 使用插件</div><div class="line"></div><div class="line">const router = new VueRouter(&#123;//为路由配置路线</div><div class="line">	routes</div><div class="line">&#125;)</div><div class="line"></div><div class="line">const app = new Vue(&#123;</div><div class="line">	router</div><div class="line">&#125;).<span class="variable">$mount</span>(<span class="string">"#app"</span>)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="第二步：编辑路由配置文件"><a href="#第二步：编辑路由配置文件" class="headerlink" title="第二步：编辑路由配置文件"></a>第二步：编辑路由配置文件</h2><p>新建router目录，在里面新建router.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">//router.js</div><div class="line">//引入组件-默认的第一个组件，一定是App.vue</div><div class="line">import App from <span class="string">'../App'</span> </div><div class="line">import Home from <span class="string">'../pages/home'</span></div><div class="line">import About from <span class="string">'../pages/about'</span></div><div class="line"></div><div class="line"></div><div class="line">//组件的引入还可以是按需引入，即需要哪个组件的时候才开始加载那个组件</div><div class="line">//说明：webpack 在编译时，会静态地解析代码中的 require.ensure()，同时将模块添加到一个分开的 chunk 当中。这个新的 chunk 会被 webpack 通过 jsonp 来按需加载。</div><div class="line">//参数说明：第一个参数是组件的路径，第二个是名称。webpack，会将名称相同的组件一起打包，加载的时候一起加载</div><div class="line">const Home = r =&gt; require.ensure([], () =&gt; r(require(<span class="string">'../pages/home'</span>)), <span class="string">'home'</span>)</div><div class="line">const About = r =&gt; require.ensure([], () =&gt; r(require(<span class="string">'../pages/about'</span>)), <span class="string">'about'</span>)</div><div class="line"></div><div class="line"></div><div class="line">//配置路由</div><div class="line"><span class="built_in">export</span> default [&#123;</div><div class="line">	path: <span class="string">"/"</span>,</div><div class="line">	component: App,</div><div class="line">	children: [&#123;</div><div class="line">		path: <span class="string">'/'</span>,</div><div class="line">		component: Home,  //如果有嵌套路由的话 在配置一个children,同事在home.vue中需要写上 &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line">		children:[&#123;</div><div class="line">			//...</div><div class="line">		&#125;]</div><div class="line">	&#125;,&#123;</div><div class="line">		path: <span class="string">'/home'</span>,</div><div class="line">		component: Home</div><div class="line">	&#125;,&#123;</div><div class="line">		path: <span class="string">'/about'</span>,</div><div class="line">		component: About</div><div class="line">	&#125;]</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -433,8 +399,8 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/30/vuex初体验/" rel="next" title="Vuex初体验">
-                <i class="fa fa-chevron-left"></i> Vuex初体验
+              <a href="/2017/03/30/vue创建项目/" rel="next" title="vue创建项目">
+                <i class="fa fa-chevron-left"></i> vue创建项目
               </a>
             
           </div>
@@ -442,10 +408,6 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/12/vue路由的使用/" rel="prev" title="vue-router 学习笔记">
-                vue-router 学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -471,8 +433,8 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/30/vue创建项目/"
-           data-title="vue创建项目" data-url="http://yoursite.com/2017/03/30/vue创建项目/">
+      <div class="ds-thread" data-thread-key="2017/07/12/vue路由的使用/"
+           data-title="vue-router 学习笔记" data-url="http://yoursite.com/2017/07/12/vue路由的使用/">
       </div>
     
   </div>
@@ -590,7 +552,7 @@ ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：引入与配置"><span class="nav-number">1.</span> <span class="nav-text">第一步：引入与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：编辑路由配置文件"><span class="nav-number">2.</span> <span class="nav-text">第二步：编辑路由配置文件</span></a></li></ol></div>
             
 
           </div>
