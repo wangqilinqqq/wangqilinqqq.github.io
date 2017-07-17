@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-17T09:32:26.911Z</updated>
+  <updated>2017-07-17T10:00:39.880Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://yoursite.com/2017/07/17/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2017/07/17/linux学习笔记/</id>
     <published>2017-07-17T07:16:46.000Z</published>
-    <updated>2017-07-17T09:32:26.911Z</updated>
+    <updated>2017-07-17T10:00:39.880Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><blockquote>
+    <content type="html"><![CDATA[<p>相对于现在的 Windows 系统，UNIX/Linux 本身是没有图形界面的，我们通常在 UNIX/Linux 发行版上看到的图形界面实际都只是运行在 Linux 系统之上的一套软件，类似 Windows95 之前的 Windows 的图形界面实则也只是运行在 DOS 环境的一套软件。<a id="more"></a>而 Linux 上的这套软件以前是 XFree86，现在则是 xorg（X.Org），而这套软件又是通过 X 窗口系统（X Window System，也常被称为 X11 或 X）实现的，X 本身只是工具包及架构协议，而 xorg 便是 X 架构规范的一个实现体，也就是说它是实现了 X 协议规范的一个提供图形界面服务的服务器，就像实现了 http 协议提供 web 服务的 Apache 。如果只有服务器也是不能实现一个完整的桌面环境的，当然还需要一个客户端，我们称为 X Client，像如下几个大家熟知也最流行的实现了客户端功能的桌面环境 KDE，GNOME，XFCE，LXDE 。其中就有你看到的，实验楼目前使用的 XFCE 桌面环境，部分老用户可能可以回想起，实验楼之前使用的环境是 LXDE 。这也意味着在 Linux 上你可以自己选择安装不同的桌面环境，甚至可以定制自己的专属桌面。</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><blockquote>
 <p>Ctrl+d —- 键盘输入结束或退出终端<br>Ctrl+s —- 暂停当前程序，暂停后按下任意键恢复运行<br>Ctrl+z —- 将当前程序放到后台运行，恢复到前台为命令fg<br>Ctrl+a —- 将光标移至输入行头，相当于Home键<br>Ctrl+e —- 将光标移至输入行末，相当于End键<br>Ctrl+k —- 删除从光标所在位置到行末<br>Alt+Backspace —- 向前删除一个单词<br>Shift+PgUp —- 将终端显示向上滚动<br>Shift+PgDn —- 将终端显示向下滚动</p>
 </blockquote>
 <h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><blockquote>
@@ -138,8 +139,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;快捷键&quot;&gt;&lt;a href=&quot;#快捷键&quot; class=&quot;headerlink&quot; title=&quot;快捷键&quot;&gt;&lt;/a&gt;快捷键&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Ctrl+d —- 键盘输入结束或退出终端&lt;br&gt;Ctrl+s —- 暂停当前程序，暂停后按下任意键恢复运
+      &lt;p&gt;相对于现在的 Windows 系统，UNIX/Linux 本身是没有图形界面的，我们通常在 UNIX/Linux 发行版上看到的图形界面实际都只是运行在 Linux 系统之上的一套软件，类似 Windows95 之前的 Windows 的图形界面实则也只是运行在 DOS 环境的一套软件。
     
     </summary>
     
@@ -168,6 +168,58 @@
     
       &lt;h2 id=&quot;第一步：引入与配置&quot;&gt;&lt;a href=&quot;#第一步：引入与配置&quot; class=&quot;headerlink&quot; title=&quot;第一步：引入与配置&quot;&gt;&lt;/a&gt;第一步：引入与配置&lt;/h2&gt;&lt;p&gt;在vue中使用路由的第一步总是引入路由&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;import Vue from &lt;span class=&quot;string&quot;&gt;&#39;vue&#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;import vueRouter from &lt;span class=&quot;string&quot;&gt;&#39;vue-router&#39;&lt;/span&gt; //引入路由模块&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;import routes from &lt;span class=&quot;string&quot;&gt;&#39;./router/router&#39;&lt;/span&gt; //引入路由配置文件&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Vue.use(vueRouter) //vue 使用插件&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;const router = new VueRouter(&amp;#123;//为路由配置路线&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	routes&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;const app = new Vue(&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	router&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;).&lt;span class=&quot;variable&quot;&gt;$mount&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;#app&quot;&lt;/span&gt;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue创建项目</title>
+    <link href="http://yoursite.com/2017/03/30/vue%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://yoursite.com/2017/03/30/vue创建项目/</id>
+    <published>2017-03-30T07:16:46.000Z</published>
+    <updated>2017-03-30T10:00:02.886Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>需要安装node 和 vue-cli 脚手架，node的安装方法多种多样，直接 <a href="https://nodejs.org/en/" title="node官网" target="_blank" rel="external">进入官网</a> 下载</p>
+<p>一. 安装全局vue-cli</p>
+<blockquote>
+<p>npm install vue-cli -g</p>
+</blockquote>
+<p>ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了<br><a id="more"></a></p>
+<p>二. 创建项目</p>
+<blockquote>
+<p>vue init webpack vue2-demo</p>
+</blockquote>
+<p><img src="/images/vue-study/code1.png" alt="Alt text"></p>
+<p>三. 进入到vue2-demo，安装依赖</p>
+<blockquote>
+<p>npm install</p>
+</blockquote>
+<p>四.安装webpack</p>
+<blockquote>
+<p>npm install webpack –save-dev</p>
+</blockquote>
+<p> <strong>-dev</strong> 指的是在生产环节中使用，如果需要在线上环境中使用，就不需要带-dev</p>
+<p>五.本地运行</p>
+<blockquote>
+<p>npm run dev</p>
+</blockquote>
+<p>浏览器输出 <code>http://localhost:8080</code> 即可访问</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;需要安装node 和 vue-cli 脚手架，node的安装方法多种多样，直接 &lt;a href=&quot;https://nodejs.org/en/&quot; title=&quot;node官网&quot;&gt;进入官网&lt;/a&gt; 下载&lt;/p&gt;
+&lt;p&gt;一. 安装全局vue-cli&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;npm install vue-cli -g&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了&lt;br&gt;
     
     </summary>
     
@@ -228,58 +280,6 @@
     
     
       <category term="Vuex" scheme="http://yoursite.com/tags/Vuex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue创建项目</title>
-    <link href="http://yoursite.com/2017/03/30/vue%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
-    <id>http://yoursite.com/2017/03/30/vue创建项目/</id>
-    <published>2017-03-30T07:16:46.000Z</published>
-    <updated>2017-03-30T10:00:02.886Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>需要安装node 和 vue-cli 脚手架，node的安装方法多种多样，直接 <a href="https://nodejs.org/en/" title="node官网" target="_blank" rel="external">进入官网</a> 下载</p>
-<p>一. 安装全局vue-cli</p>
-<blockquote>
-<p>npm install vue-cli -g</p>
-</blockquote>
-<p>ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了<br><a id="more"></a></p>
-<p>二. 创建项目</p>
-<blockquote>
-<p>vue init webpack vue2-demo</p>
-</blockquote>
-<p><img src="/images/vue-study/code1.png" alt="Alt text"></p>
-<p>三. 进入到vue2-demo，安装依赖</p>
-<blockquote>
-<p>npm install</p>
-</blockquote>
-<p>四.安装webpack</p>
-<blockquote>
-<p>npm install webpack –save-dev</p>
-</blockquote>
-<p> <strong>-dev</strong> 指的是在生产环节中使用，如果需要在线上环境中使用，就不需要带-dev</p>
-<p>五.本地运行</p>
-<blockquote>
-<p>npm run dev</p>
-</blockquote>
-<p>浏览器输出 <code>http://localhost:8080</code> 即可访问</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;需要安装node 和 vue-cli 脚手架，node的安装方法多种多样，直接 &lt;a href=&quot;https://nodejs.org/en/&quot; title=&quot;node官网&quot;&gt;进入官网&lt;/a&gt; 下载&lt;/p&gt;
-&lt;p&gt;一. 安装全局vue-cli&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;npm install vue-cli -g&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;ps:检查是否安装成功可用: vue -V 有显示版本号就是安装成功了&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
-    
-    
-      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
     
   </entry>
   
