@@ -1,0 +1,838 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+  <link rel="alternate" href="/404.html" title="前端打酱油" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="快捷键
+Ctrl+d —- 键盘输入结束或退出终端Ctrl+s —- 暂停当前程序，暂停后按下任意键恢复运行Ctrl+z —- 将当前程序放到后台运行，恢复到前台为命令fgCtrl+a —- 将光标移至输入行头，相当于Home键Ctrl+e —- 将光标移至输入行末，相当于End键Ctrl+k —- 删除从光标所在位置到行末Alt+Backspace —- 向前删除一个单词Shift+PgUp —">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/07/17/linux学习笔记/index.html">
+<meta property="og:site_name" content="前端打酱油">
+<meta property="og:description" content="快捷键
+Ctrl+d —- 键盘输入结束或退出终端Ctrl+s —- 暂停当前程序，暂停后按下任意键恢复运行Ctrl+z —- 将当前程序放到后台运行，恢复到前台为命令fgCtrl+a —- 将光标移至输入行头，相当于Home键Ctrl+e —- 将光标移至输入行末，相当于End键Ctrl+k —- 删除从光标所在位置到行末Alt+Backspace —- 向前删除一个单词Shift+PgUp —">
+<meta property="og:image" content="http://yoursite.com/images/linux/logoblackfont.png">
+<meta property="og:updated_time" content="2017-07-17T09:32:26.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux学习笔记">
+<meta name="twitter:description" content="快捷键
+Ctrl+d —- 键盘输入结束或退出终端Ctrl+s —- 暂停当前程序，暂停后按下任意键恢复运行Ctrl+z —- 将当前程序放到后台运行，恢复到前台为命令fgCtrl+a —- 将光标移至输入行头，相当于Home键Ctrl+e —- 将光标移至输入行末，相当于End键Ctrl+k —- 删除从光标所在位置到行末Alt+Backspace —- 向前删除一个单词Shift+PgUp —">
+<meta name="twitter:image" content="http://yoursite.com/images/linux/logoblackfont.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6377614162079516000',
+      author: '皇上'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/17/linux学习笔记/"/>
+
+
+
+
+
+  <title> Linux学习笔记 | 前端打酱油 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">前端打酱油</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/17/linux学习笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="kylin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="前端打酱油">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="前端打酱油" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-17T15:16:46+08:00">
+                2017-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/17/linux学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/17/linux学习笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><blockquote>
+<p>Ctrl+d —- 键盘输入结束或退出终端<br>Ctrl+s —- 暂停当前程序，暂停后按下任意键恢复运行<br>Ctrl+z —- 将当前程序放到后台运行，恢复到前台为命令fg<br>Ctrl+a —- 将光标移至输入行头，相当于Home键<br>Ctrl+e —- 将光标移至输入行末，相当于End键<br>Ctrl+k —- 删除从光标所在位置到行末<br>Alt+Backspace —- 向前删除一个单词<br>Shift+PgUp —- 将终端显示向上滚动<br>Shift+PgDn —- 将终端显示向下滚动</p>
+</blockquote>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><blockquote>
+<p>* —- 匹配 0 或多个字符<br>? —- 匹配任意一个字符<br>[list] —- 匹配 list 中的任意单一字符<br>[!list] —- 匹配 除list 中的任意单一字符以外的字符<br>[c1-c2] —- 匹配 c1-c2 中的任意单一字符 如：[0-9] [a-z]<br>{string1,string2,…} —- 匹配 string1 或 string2 (或更多)其一字符串<br>{c1..c2} —- 匹配 c1-c2 中全部字符 如{1..10}</p>
+</blockquote>
+<h2 id="用户及文件权限管理"><a href="#用户及文件权限管理" class="headerlink" title="用户及文件权限管理"></a>用户及文件权限管理</h2><h3 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">who am i</div></pre></td></tr></table></figure>
+<p>who 命令其它常用参数</p>
+<blockquote>
+<p>参数 —- 说明<br>-a —- 打印能打印的全部<br>-d —- 打印死掉的进程<br>-m —- 同am i,mom likes<br>-q —- 打印当前登录用户数及用户名<br>-u —- 打印当前登录用户登录信息<br>-r —- 打印运行等级</p>
+</blockquote>
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p>sudo su su-  介绍</p>
+<p><code>su &lt;user</code>可以切换到用户 user，执行时需要输入目标用户的密码，<code>sudo &lt;cmd</code>可以以特权级别运行 cmd 命令，需要当前用户属于 sudo 组，且需要输入当前用户的密码。<code>su - &lt;user</code>命令也是切换用户，同时环境变量也会跟着改变成目标用户的环境变量。</p>
+<p><strong>注:所有使用 <code>sudo</code>和<code>su</code> 命令的用户都必须在 sudo用户组才能正常使用sudo命令</strong></p>
+<p>新建用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo adduser &lt;user name&gt;</div></pre></td></tr></table></figure>
+<p>切换用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">su <span class="_">-l</span> &lt;user name&gt;</div></pre></td></tr></table></figure>
+<p>查看用户组</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">groups &lt;user name&gt;</div></pre></td></tr></table></figure>
+<p>将其他用户加入到sudo组</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo usermod -G sudo &lt;user name&gt;</div></pre></td></tr></table></figure>
+<p><strong>只有在sudo组内的用户才有权限拉人</strong></p>
+<p>删除用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo deluser &lt;user name&gt; --remove-home</div></pre></td></tr></table></figure>
+<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><h4 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h4><p>查看文件的详细信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls <span class="_">-l</span></div></pre></td></tr></table></figure>
+<p>输出示例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">drwxrwxrwx 2 shiyanlou shiyanlou 4096 7月 17 14:00 1.txt</div><div class="line"><span class="comment"># 文件类型和权限 链接数 所有者 所属组 文件大小 最后修改日期 文件名</span></div></pre></td></tr></table></figure>
+<p>文件类型和权限详解</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drwxrwxrwx</div></pre></td></tr></table></figure>
+<p>可分解为四组<br>第一个字母为一组<br>第二至第四为一组<br>第五至第七位一组<br>第八至第十位一组    </p>
+<p>第一组:<br>‘d’表示目录<br>‘l’表示软链接<br>‘b’表示块设备<br>‘c’表示字符设备<br>‘s’socket<br>‘p’管道<br>‘-‘普通文件</p>
+<p>第二组:表示的是所有者权限<br>第三组:表示用户组权限<br>第四组:表示其他用户权限</p>
+<p>r-代表读权限<br>w-代表写权限<br>x-代表执行权限</p>
+<h4 id="修改文件所有者"><a href="#修改文件所有者" class="headerlink" title="修改文件所有者"></a>修改文件所有者</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown &lt;user&gt; &lt;file name&gt;</div></pre></td></tr></table></figure>
+<p><strong>注:所有使用 sudo 指令的用户都必须在sudo组才能使用 sudo 指令</strong></p>
+<h4 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 700 &lt;file name&gt;</div></pre></td></tr></table></figure>
+<p>一个完整rwx 为 7</p>
+<p>只可执行 1<br>只可写 2<br>可执行可写 3<br>只可读 4<br>可执行可读 5<br>可写可读 6<br>可写可读可执行 7    </p>
+<h2 id="Linux-目录结构及文件基本操作"><a href="#Linux-目录结构及文件基本操作" class="headerlink" title="Linux 目录结构及文件基本操作"></a>Linux 目录结构及文件基本操作</h2><h3 id="Linux-目录结构"><a href="#Linux-目录结构" class="headerlink" title="Linux 目录结构"></a>Linux 目录结构</h3><h4 id="FHS-标准"><a href="#FHS-标准" class="headerlink" title="FHS 标准"></a>FHS 标准</h4><p><strong>如果觉得图片不清晰，建议另存为到本地放大查看：</strong></p>
+<p><img src="/images/linux/logoblackfont.png" alt="Alt text" title="FHS 标准"></p>
+<h4 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h4><p>这个不需要记,记几个linux命令即可</p>
+<blockquote>
+<p>打印当前绝对路径</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">pwd</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>输出隐藏文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls <span class="_">-a</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>进入home目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~</div></pre></td></tr></table></figure>
+<h3 id="linux文件的基本操作"><a href="#linux文件的基本操作" class="headerlink" title="linux文件的基本操作"></a>linux文件的基本操作</h3><h4 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h4><blockquote>
+<p>创建文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>新建目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir  &lt;catalogue name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>带 <code>-p</code> 参数可同时创建父目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p father/son/grandson</div></pre></td></tr></table></figure>
+<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><blockquote>
+<blockquote>
+<p>复制文件<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp &lt;file name&gt; &lt;path&gt;</div></pre></td></tr></table></figure></p>
+<p>复制目录<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 需要加上 -r 或者 -R 参数，表示递归复制，注：复制 father目录 到 family目录下</span></div><div class="line">$ cp -r father family</div></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>强制删除</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm <span class="_">-f</span> &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>删除目录</p>
+</blockquote>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 跟复制目录一样，要删除一个目录，也需要加上 -r 或 -R 参数：</span></div><div class="line">rm -r &lt;catalogue name&gt;</div></pre></td></tr></table></figure>
+</code></pre><h4 id="移动与重命名"><a href="#移动与重命名" class="headerlink" title="移动与重命名"></a>移动与重命名</h4><blockquote>
+<p>移动文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv &lt;源目录文件&gt; &lt;目的目录&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>文件重命名</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv &lt;旧的文件名&gt; &lt;新的文件名&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>批量重命名</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用通配符批量创建 5 个文件:</span></div><div class="line">$ touch file&#123;1..5&#125;.txt</div><div class="line"></div><div class="line"><span class="comment"># 批量将这 5 个后缀为 .txt 的文本文件重命名为以 .c 为后缀的文件:</span></div><div class="line">$ rename <span class="string">'s/\.txt/\.c/'</span> *.txt</div><div class="line"></div><div class="line"><span class="comment"># 批量将这 5 个文件，文件名改为大写:</span></div><div class="line">$ rename <span class="string">'y/a-z/A-Z/'</span> *.c</div></pre></td></tr></table></figure>
+<h4 id="查看文件-1"><a href="#查看文件-1" class="headerlink" title="查看文件"></a>查看文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cat &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>查看并显示行号</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cat -n &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>nl</code> 命令。添加行号并打印</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -b : 指定添加行号的方式，主要有两种：</span></div><div class="line"><span class="comment">#     -b a:表示无论是否为空行，同样列出行号("cat -n"就是这种方式)</span></div><div class="line"><span class="comment">#     -b t:只列出非空行的编号并列出（默认为这种方式）</span></div><div class="line"><span class="comment"># -n : 设置行号的样式，主要有三种：</span></div><div class="line"><span class="comment">#     -n ln:在行号字段最左端显示</span></div><div class="line"><span class="comment">#     -n rn:在行号字段最右边显示，且不加 0</span></div><div class="line"><span class="comment">#     -n rz:在行号字段最右边显示，且加 0</span></div><div class="line"><span class="comment"># -w : 行号字段占用的位数(默认为 6 位)</span></div><div class="line"></div><div class="line">$ nl -b <span class="_">-a</span> &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用 <code>more</code> 查看文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ more &lt;file name&gt;</div><div class="line"><span class="comment"># 打开后默认只显示一屏内容，终端底部显示当前阅读的进度。</span></div><div class="line"><span class="comment"># 可以使用 Enter 键向下滚动一行，使用 Space 键向下滚动一屏，</span></div><div class="line"><span class="comment"># 按下 h 显示帮助，q 退出。</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用 <code>head</code> 和 <code>tail</code> 命令查看文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 只查看文件的头几行和尾几行</span></div><div class="line">$ tail &lt;file name&gt;</div><div class="line"></div><div class="line"><span class="comment"># 甚至更直接的只看一行， 加上 -n 参数，后面紧跟行数：</span></div><div class="line">$ tail -n 1 &lt;file name&gt;</div><div class="line"></div><div class="line"><span class="comment"># 关于 tail 命令，不得不提的还有它一个很牛的参数 -f，</span></div><div class="line"><span class="comment"># 这个参数可以实现不停地读取某个文件的内容并显示。</span></div><div class="line"><span class="comment"># 这可以让我们动态查看日志，达到实时监视的目的。</span></div></pre></td></tr></table></figure>
+<h4 id="编辑文件"><a href="#编辑文件" class="headerlink" title="编辑文件"></a>编辑文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim &lt;file name&gt;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/12/vue路由的使用/" rel="next" title="vue-router 学习笔记">
+                <i class="fa fa-chevron-left"></i> vue-router 学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/07/17/linux学习笔记/"
+           data-title="Linux学习笔记" data-url="http://yoursite.com/2017/07/17/linux学习笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="kylin" />
+          <p class="site-author-name" itemprop="name">kylin</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/404.html" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangqilinqqq" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">1.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符"><span class="nav-number">2.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户及文件权限管理"><span class="nav-number">3.</span> <span class="nav-text">用户及文件权限管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看用户"><span class="nav-number">3.1.</span> <span class="nav-text">查看用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建用户"><span class="nav-number">3.2.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件权限"><span class="nav-number">3.3.</span> <span class="nav-text">文件权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件"><span class="nav-number">3.3.1.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件所有者"><span class="nav-number">3.3.2.</span> <span class="nav-text">修改文件所有者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件权限"><span class="nav-number">3.3.3.</span> <span class="nav-text">修改文件权限</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-目录结构及文件基本操作"><span class="nav-number">4.</span> <span class="nav-text">Linux 目录结构及文件基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-目录结构"><span class="nav-number">4.1.</span> <span class="nav-text">Linux 目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FHS-标准"><span class="nav-number">4.1.1.</span> <span class="nav-text">FHS 标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绝对路径和相对路径"><span class="nav-number">4.1.2.</span> <span class="nav-text">绝对路径和相对路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux文件的基本操作"><span class="nav-number">4.2.</span> <span class="nav-text">linux文件的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建"><span class="nav-number">4.2.1.</span> <span class="nav-text">新建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制"><span class="nav-number">4.2.2.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">4.2.3.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动与重命名"><span class="nav-number">4.2.4.</span> <span class="nav-text">移动与重命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件-1"><span class="nav-number">4.2.5.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑文件"><span class="nav-number">4.2.6.</span> <span class="nav-text">编辑文件</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kylin</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wangqilin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
