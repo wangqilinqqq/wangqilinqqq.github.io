@@ -95,7 +95,9 @@
 <meta property="og:description" content="Linux简介
 相对于现在的 Windows 系统，UNIX/Linux 本身是没有图形界面的，我们通常在 UNIX/Linux 发行版上看到的图形界面实际都只是运行在 Linux 系统之上的一套软件，类似 Windows95 之前的 Windows 的图形界面实则也只是运行在 DOS 环境的一套软件。">
 <meta property="og:image" content="http://yoursite.com/images/linux/logoblackfont.png">
-<meta property="og:updated_time" content="2017-07-17T10:03:11.142Z">
+<meta property="og:image" content="http://yoursite.com/images/linux/logoblackfont_1.png">
+<meta property="og:image" content="http://yoursite.com/images/linux/5-8.png">
+<meta property="og:updated_time" content="2017-07-19T08:07:14.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux学习笔记">
 <meta name="twitter:description" content="Linux简介
@@ -373,7 +375,7 @@
 <h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><blockquote>
 <p>* —- 匹配 0 或多个字符<br>? —- 匹配任意一个字符<br>[list] —- 匹配 list 中的任意单一字符<br>[!list] —- 匹配 除list 中的任意单一字符以外的字符<br>[c1-c2] —- 匹配 c1-c2 中的任意单一字符 如：[0-9] [a-z]<br>{string1,string2,…} —- 匹配 string1 或 string2 (或更多)其一字符串<br>{c1..c2} —- 匹配 c1-c2 中全部字符 如{1..10}</p>
 </blockquote>
-<h2 id="用户及文件权限管理"><a href="#用户及文件权限管理" class="headerlink" title="用户及文件权限管理"></a>用户及文件权限管理</h2><h3 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">who am i</div></pre></td></tr></table></figure>
+<h2 id="用户及文件权限管理"><a href="#用户及文件权限管理" class="headerlink" title="用户及文件权限管理"></a>用户及文件权限管理</h2><h3 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ who am i</div></pre></td></tr></table></figure>
 <p>who 命令其它常用参数</p>
 <blockquote>
 <p>参数 —- 说明<br>-a —- 打印能打印的全部<br>-d —- 打印死掉的进程<br>-m —- 同am i,mom likes<br>-q —- 打印当前登录用户数及用户名<br>-u —- 打印当前登录用户登录信息<br>-r —- 打印运行等级</p>
@@ -382,18 +384,18 @@
 <p><code>su &lt;user</code>可以切换到用户 user，执行时需要输入目标用户的密码，<code>sudo &lt;cmd</code>可以以特权级别运行 cmd 命令，需要当前用户属于 sudo 组，且需要输入当前用户的密码。<code>su - &lt;user</code>命令也是切换用户，同时环境变量也会跟着改变成目标用户的环境变量。</p>
 <p><strong>注:所有使用 <code>sudo</code>和<code>su</code> 命令的用户都必须在 sudo用户组才能正常使用sudo命令</strong></p>
 <p>新建用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo adduser &lt;user name&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo adduser &lt;user name&gt;</div></pre></td></tr></table></figure>
 <p>切换用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">su <span class="_">-l</span> &lt;user name&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ su <span class="_">-l</span> &lt;user name&gt;</div></pre></td></tr></table></figure>
 <p>查看用户组</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">groups &lt;user name&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ groups &lt;user name&gt;</div></pre></td></tr></table></figure>
 <p>将其他用户加入到sudo组</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo usermod -G sudo &lt;user name&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo usermod -G sudo &lt;user name&gt;</div></pre></td></tr></table></figure>
 <p><strong>只有在sudo组内的用户才有权限拉人</strong></p>
 <p>删除用户</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo deluser &lt;user name&gt; --remove-home</div></pre></td></tr></table></figure>
 <h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><h4 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h4><p>查看文件的详细信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls <span class="_">-l</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls <span class="_">-l</span></div></pre></td></tr></table></figure>
 <p>输出示例</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">drwxrwxrwx 2 shiyanlou shiyanlou 4096 7月 17 14:00 1.txt</div><div class="line"><span class="comment"># 文件类型和权限 链接数 所有者 所属组 文件大小 最后修改日期 文件名</span></div></pre></td></tr></table></figure>
 <p>文件类型和权限详解</p>
@@ -402,9 +404,9 @@
 <p>第一组:<br>‘d’表示目录<br>‘l’表示软链接<br>‘b’表示块设备<br>‘c’表示字符设备<br>‘s’socket<br>‘p’管道<br>‘-‘普通文件</p>
 <p>第二组:表示的是所有者权限<br>第三组:表示用户组权限<br>第四组:表示其他用户权限</p>
 <p>r-代表读权限<br>w-代表写权限<br>x-代表执行权限</p>
-<h4 id="修改文件所有者"><a href="#修改文件所有者" class="headerlink" title="修改文件所有者"></a>修改文件所有者</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown &lt;user&gt; &lt;file name&gt;</div></pre></td></tr></table></figure>
+<h4 id="修改文件所有者"><a href="#修改文件所有者" class="headerlink" title="修改文件所有者"></a>修改文件所有者</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo chown &lt;user&gt; &lt;file name&gt;</div></pre></td></tr></table></figure>
 <p><strong>注:所有使用 sudo 指令的用户都必须在sudo组才能使用 sudo 指令</strong></p>
-<h4 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 700 &lt;file name&gt;</div></pre></td></tr></table></figure>
+<h4 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 700 &lt;file name&gt;</div></pre></td></tr></table></figure>
 <p>一个完整rwx 为 7</p>
 <p>只可执行 1<br>只可写 2<br>可执行可写 3<br>只可读 4<br>可执行可读 5<br>可写可读 6<br>可写可读可执行 7    </p>
 <h2 id="Linux-目录结构及文件基本操作"><a href="#Linux-目录结构及文件基本操作" class="headerlink" title="Linux 目录结构及文件基本操作"></a>Linux 目录结构及文件基本操作</h2><h3 id="Linux-目录结构"><a href="#Linux-目录结构" class="headerlink" title="Linux 目录结构"></a>Linux 目录结构</h3><h4 id="FHS-标准"><a href="#FHS-标准" class="headerlink" title="FHS 标准"></a>FHS 标准</h4><p><strong>如果觉得图片不清晰，建议另存为到本地放大查看：</strong></p>
@@ -413,50 +415,50 @@
 <blockquote>
 <p>打印当前绝对路径</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">pwd</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">pwd</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>输出隐藏文件</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls <span class="_">-a</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls <span class="_">-a</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>进入home目录</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ~</div></pre></td></tr></table></figure>
 <h3 id="linux文件的基本操作"><a href="#linux文件的基本操作" class="headerlink" title="linux文件的基本操作"></a>linux文件的基本操作</h3><h4 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h4><blockquote>
 <p>创建文件</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch &lt;file name&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ touch &lt;file name&gt;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>新建目录</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir  &lt;catalogue name&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir  &lt;catalogue name&gt;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>带 <code>-p</code> 参数可同时创建父目录</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p father/son/grandson</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir -p father/son/grandson</div></pre></td></tr></table></figure>
 <h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><blockquote>
 <blockquote>
-<p>复制文件<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp &lt;file name&gt; &lt;path&gt;</div></pre></td></tr></table></figure></p>
+<p>复制文件<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cp &lt;file name&gt; &lt;path&gt;</div></pre></td></tr></table></figure></p>
 <p>复制目录<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 需要加上 -r 或者 -R 参数，表示递归复制，注：复制 father目录 到 family目录下</span></div><div class="line">$ cp -r father family</div></pre></td></tr></table></figure></p>
 </blockquote>
 </blockquote>
-<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm &lt;file name&gt;</div></pre></td></tr></table></figure>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm &lt;file name&gt;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>强制删除</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm <span class="_">-f</span> &lt;file name&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm <span class="_">-f</span> &lt;file name&gt;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>删除目录</p>
 </blockquote>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 跟复制目录一样，要删除一个目录，也需要加上 -r 或 -R 参数：</span></div><div class="line">rm -r &lt;catalogue name&gt;</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 跟复制目录一样，要删除一个目录，也需要加上 -r 或 -R 参数：</span></div><div class="line">$ rm -r &lt;catalogue name&gt;</div></pre></td></tr></table></figure>
 </code></pre><h4 id="移动与重命名"><a href="#移动与重命名" class="headerlink" title="移动与重命名"></a>移动与重命名</h4><blockquote>
 <p>移动文件</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv &lt;源目录文件&gt; &lt;目的目录&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mv &lt;源目录文件&gt; &lt;目的目录&gt;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>文件重命名</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv &lt;旧的文件名&gt; &lt;新的文件名&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mv &lt;旧的文件名&gt; &lt;新的文件名&gt;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>批量重命名</p>
 </blockquote>
@@ -479,6 +481,186 @@
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 只查看文件的头几行和尾几行</span></div><div class="line">$ tail &lt;file name&gt;</div><div class="line"></div><div class="line"><span class="comment"># 甚至更直接的只看一行， 加上 -n 参数，后面紧跟行数：</span></div><div class="line">$ tail -n 1 &lt;file name&gt;</div><div class="line"></div><div class="line"><span class="comment"># 关于 tail 命令，不得不提的还有它一个很牛的参数 -f，</span></div><div class="line"><span class="comment"># 这个参数可以实现不停地读取某个文件的内容并显示。</span></div><div class="line"><span class="comment"># 这可以让我们动态查看日志，达到实时监视的目的。</span></div></pre></td></tr></table></figure>
 <h4 id="编辑文件"><a href="#编辑文件" class="headerlink" title="编辑文件"></a>编辑文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim &lt;file name&gt;</div></pre></td></tr></table></figure>
+<h2 id="环境变量与文件查找"><a href="#环境变量与文件查找" class="headerlink" title="环境变量与文件查找"></a>环境变量与文件查找</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p>创建变量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">declare</span> tmp</div></pre></td></tr></table></figure>
+<blockquote>
+<p>赋值变量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ tmp=shiyanlou</div></pre></td></tr></table></figure>
+<blockquote>
+<p>读取变量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="variable">$tmp</span></div></pre></td></tr></table></figure>
+<p><strong>可以既用既创建， <code>declare</code> 在声明其他类型的变量时会用到。读取变量 <code>$</code> 符号不要忘记， <code>$</code> 表示引用一个变量</strong></p>
+<p><strong>注意：并不是任何形式的变量名都是可用的，变量名只能是英文字母、数字或者下划线，且不能以数字作为开头。</strong></p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>通常我们会涉及到的变量类型有三种：</p>
+<ul>
+<li>当前 Shell 进程私有用户自定义变量，如上面我们创建的 tmp 变量，只在当前 Shell 中有效。</li>
+<li>Shell 本身内建的变量。</li>
+<li>从自定义变量导出的环境变量。</li>
+</ul>
+<blockquote>
+<p>也有三个与上述三种环境变量相关的命令：set，env，export。这三个命令很相似，都是用于打印环境变量信息，区别在于涉及的变量范围不同。详见下表：</p>
+</blockquote>
+<table><tr><th>命令</th><th>说明</th></tr><tr><td>set</td><td>显示当前 Shell 所有变量，包括其内建环境变量（与 Shell 外观等相关），用户自定义变量及导出的环境变量。</td></tr><tr><td>env</td><td>显示与当前用户相关的环境变量，还可以让命令在指定环境中运行。</td></tr><tr><td>export</td><td>显示从 Shell 中导出成环境变量的变量，也能通过它将自定义变量导出为环境变量。</td></tr></table>
+
+<blockquote>
+<p>关于哪些变量是环境变量，可以简单地理解成在当前进程的子进程有效则为环境变量，否则不是（有些人也将所有变量统称为环境变量，只是以全局环境变量和局部环境变量进行区分，我们只要理解它们的实质区别即可）。我们这里用 export 命令来体会一下，先在 Shell 中设置一个变量 temp=shiyanlou，然后再新创建一个子 Shell 查看 temp 变量的值：</p>
+</blockquote>
+<p><img src="/images/linux/logoblackfont_1.png" alt="Alt text"></p>
+<p><strong>永久生效</strong></p>
+<p>但是问题来了，当你关机后，或者关闭当前的 shell 之后，环境变量就没了啊。怎么才能让环境变量永久生效呢？</p>
+<p>按变量的生存周期来划分，Linux 变量可分为两类：</p>
+<ul>
+<li><p>永久的：需要修改配置文件，变量永久生效；</p>
+</li>
+<li><p>临时的：使用 export 命令行声明即可，变量在关闭 shell 时失效。</p>
+</li>
+</ul>
+<p>这里介绍两个重要文件 /etc/bashrc（有的 Linux 没有这个文件） 和 /etc/profile ，它们分别存放的是 shell 变量和环境变量。还有要注意区别的是每个用户目录下的一个隐藏文件：</p>
+<p>这个 .profile 只对当前用户永久生效。而写在 /etc/profile 里面的是对所有用户永久生效，所以如果想要添加一个永久生效的环境变量，只需要打开 /etc/profile，在最后加上你想添加的环境变量就好啦。</p>
+<h3 id="命令的查找路径与顺序"><a href="#命令的查找路径与顺序" class="headerlink" title="命令的查找路径与顺序"></a>命令的查找路径与顺序</h3><p>你可能很早之前就有疑问，我们在 Shell 中输入一个命令，Shell 是怎么知道去哪找到这个命令然后执行的呢？这是通过环境变量 PATH 来进行搜索的，熟悉 Windows 的用户可能知道 Windows 中的也是有这么一个 PATH 环境变量。这个 PATH 里面就保存了 Shell 中执行的命令的搜索路径</p>
+<blockquote>
+<p>查看 <code>PATH</code>变量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>下面我们将练习创建一个最简单的可执行 Shell 脚本和一个使用 C 语言创建的“ hello world ”程序，如果这两部分内容你之前没有学习过，那么你可以进行一个入门学习：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># gedit 是linux里面的一个文本编辑器</span></div><div class="line">$ gedit hello_shell.sh</div></pre></td></tr></table></figure>
+<p>在脚本中添加如下内容，保存并退出（注意不要省掉第一行，这不是注释，论坛有用户反映有语法错误，就是因为没有了第一行）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> ((i=0; i&lt;10; i++));<span class="keyword">do</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"hello shell"</span></div><div class="line"><span class="keyword">done</span></div><div class="line"></div><div class="line"><span class="built_in">exit</span> 0</div></pre></td></tr></table></figure>
+<p>为文件添加可执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 755 hello_shell.sh</div></pre></td></tr></table></figure>
+<p>执行脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./hello_shell.sh</div></pre></td></tr></table></figure>
+<p>创建一个 C 语言“ hello world ”程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gedit hello_world.c</div></pre></td></tr></table></figure>
+<p>编辑脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;stdio.h&gt;</span></div><div class="line"></div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!\n"</span>);</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>保存后使用 gcc 生成可执行文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gcc -o hello_world hello_world.c</div></pre></td></tr></table></figure>
+<blockquote>
+<p>gcc 生成二进制文件默认具有可执行权限，不需要修改</p>
+</blockquote>
+<p>在 shiyanlou 家目录创建一个 mybin 目录，并将上述 hello_shell.sh 和 hello_world 文件移动到其中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir mybin</div><div class="line">$ mv hello_shell.sh hello_world mybin/</div></pre></td></tr></table></figure>
+<p>现在你可以在 mybin 目录中分别运行你刚刚创建的两个程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> mybin</div><div class="line">$ ./hello_shell.sh</div><div class="line">$ ./hello_world</div></pre></td></tr></table></figure>
+<p>回到上一级目录，也就是 shiyanlou 家目录，当再想运行那两个程序时，会发现提示命令找不到，除非加上命令的完整路径，但那样很不方便，如何做到想使用系统命令一样执行自己创建的脚本文件或者程序呢？那就要将命令所在路径添加到 PATH 环境变量了。</p>
+<h3 id="添加自定义路径到-“PATH”-环境变量"><a href="#添加自定义路径到-“PATH”-环境变量" class="headerlink" title="添加自定义路径到 “PATH” 环境变量"></a>添加自定义路径到 “PATH” 环境变量</h3><p>在前面我们应该注意到 PATH 里面的路径是以 : 作为分割符的，所以我们可以这样添加自定义路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ PATH=<span class="variable">$PATH</span>:/home/shiyanlou/mybin</div></pre></td></tr></table></figure>
+<p><strong>注意这里一定要使用绝对路径。</strong></p>
+<p>现在你就可以在任意目录执行那两个命令了（注意需要去掉前面的 ./）。你可能会意识到这样还并没有很好的解决问题，因为我给 PATH 环境变量追加了一个路径，它也只是在当前 Shell 有效，我一旦退出终端，再打开就会发现又失效了。有没有方法让添加的环境变量全局有效？或者每次启动 Shell 时自动执行上面添加自定义路径到 PATH 的命令？下面我们就来说说后一种方式——让它自动执行。</p>
+<p>在每个用户的 home 目录中有一个 Shell 每次启动时会默认执行一个配置脚本，以初始化环境，包括添加一些用户自定义环境变量等等。zsh 的配置文件是 .zshrc，相应 Bash 的配置文件为 .bashrc 。它们在 etc 下还都有一个或多个全局的配置文件，不过我们一般只修改用户目录下的配置文件。</p>
+<p>我们可以简单地使用下面命令直接添加内容到 .zshrc 中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"PATH=<span class="variable">$PATH</span>:/home/shiyanlou/mybin"</span> &gt;&gt; .zshrc</div></pre></td></tr></table></figure>
+<p><strong>上述命令中<code>&gt;&gt;</code> 表示将标准输出以追加的方式重定向到一个文件中，注意前面用到的 <code>&gt;</code> 是以覆盖的方式重定向到一个文件中，使用的时候一定要注意分辨。在指定文件不存在的情况下都会创建新的文件。</strong></p>
+<h3 id="修改和删除已有变量"><a href="#修改和删除已有变量" class="headerlink" title="修改和删除已有变量"></a>修改和删除已有变量</h3><h4 id="变量修改"><a href="#变量修改" class="headerlink" title="变量修改"></a>变量修改</h4><p>变量的修改有以下几种方式：</p>
+<table><tr><th>变量设置方式</th><th>说明</th></tr><tr><td><code>${变量名#匹配字串}</code></td><td>从头向后开始匹配，删除符合匹配字串的最短数据</td></tr><tr><td><code>${变量名##匹配字串}</code></td><td>从头向后开始匹配，删除符合匹配字串的最长数据</td></tr><tr><td><code>${变量名%匹配字串}</code></td><td>从尾向前开始匹配，删除符合匹配字串的最短数据</td></tr><tr><td><code>${变量名%%匹配字串}</code></td><td>从尾向前开始匹配，删除符合匹配字串的最长数据</td></tr><tr><td><code>${变量名/旧的字串/新的字串}</code></td><td>将符合旧字串的第一个字串替换为新的字串</td></tr><tr><td><code>${变量名//旧的字串/新的字串}</code></td><td>将符合旧字串的全部字串替换为新的字串</td></tr></table>
+
+<p>比如修改自定义变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建变量</span></div><div class="line">$ w=wangqilin</div><div class="line"><span class="comment"># 输出变量</span></div><div class="line">$ <span class="built_in">echo</span> <span class="variable">$w</span></div><div class="line"><span class="comment"># 匹配字母w替换为大写W</span></div><div class="line">$ w=<span class="variable">$&#123;w/w/W/&#125;</span></div></pre></td></tr></table></figure>
+<h4 id="变量删除"><a href="#变量删除" class="headerlink" title="变量删除"></a>变量删除</h4><p>可以使用 unset 命令删除一个环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">unset</span> temp</div></pre></td></tr></table></figure>
+<h3 id="如何让环境变量立即生效"><a href="#如何让环境变量立即生效" class="headerlink" title="如何让环境变量立即生效"></a>如何让环境变量立即生效</h3><p>前面我们在 Shell 中修改了一个配置脚本文件之后（比如 zsh 的配置文件 home 目录下的 .zshrc），每次都要退出终端重新打开甚至重启主机之后其才能生效，很是麻烦，我们可以使用 source 命令来让其立即生效，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> .zshrc</div></pre></td></tr></table></figure>
+<h3 id="搜索文件"><a href="#搜索文件" class="headerlink" title="搜索文件"></a>搜索文件</h3><ul>
+<li>whereis 简单快速</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ whereis who</div></pre></td></tr></table></figure>
+<p>whereis 只能搜索二进制文件(-b)，man 帮助文件(-m)和源代码文件(-s)。</p>
+<ul>
+<li>locate 快而全</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 寻找etc目录下sh开头的文件</span></div><div class="line">$ locate /etc/sh</div><div class="line"></div><div class="line"><span class="comment"># 使用通配符寻找</span></div><div class="line">$ locate /usr/share/\*.jpg</div></pre></td></tr></table></figure>
+<p><strong>如果想只统计数目可以加上 <code>-c</code> 参数，<code>-i</code> 参数可以忽略大小写进行查找，<code>whereis</code> 的 <code>-b</code>、<code>-m</code>、 <code>-m</code>同样可以使用。</strong></p>
+<ul>
+<li>which 小而精</li>
+</ul>
+<p><code>which</code> 本身是 <code>Shell</code> 内建的一个命令，我们通常使用 <code>which</code> 来确定是否安装了某个指定的软件，因为它只从 <code>PATH</code> 环境变量指定的路径中去搜索命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">which</span> man</div></pre></td></tr></table></figure>
+<ul>
+<li>find 精而细<br>find 应该是这几个命令中最强大的了，它不但可以通过文件类型、文件名进行查找而且可以根据文件的属性（如文件的时间戳，文件的权限等）进行搜索。find 命令强大到，要把它讲明白至少需要单独好几节课程才行，我们这里只介绍一些常用的内容。</li>
+</ul>
+<p>这条命令表示去 /etc/ 目录下面 ，搜索名字叫做 interfaces 的文件或者目录。这是 find 命令最常见的格式，千万记住 find 的第一个参数是要搜索的地方：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo find /etc/ -name interfaces</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意 find 命令的路径是作为第一个参数的， 基本命令格式为 find [path] [option] [action] 。</strong></p>
+</blockquote>
+<p>与时间相关的命令参数：</p>
+<table><tr><th>参数</th><th>说明</th></tr><tr><td><code>-atime</code></td><td>最后访问时间</td></tr><tr><td><code>-ctime</code></td><td>最后修改文件内容的时间</td></tr><tr><td><code>-mtime</code></td><td>最后修改文件属性的时间</td></tr></table>
+
+<p>下面以 -mtime 参数举例：</p>
+<ul>
+<li>-mtime n：n 为数字，表示为在 n 天之前的“一天之内”修改过的文件</li>
+<li>-mtime +n：列出在 n 天之前（不包含 n 天本身）被修改过的文件</li>
+<li>-mtime -n：列出在 n 天之内（包含 n 天本身）被修改过的文件</li>
+<li>-newer file：file 为一个已存在的文件，列出比 file 还要新的文件名</li>
+</ul>
+<p><img src="/images/linux/5-8.png" alt="Alt text"></p>
+<p>列出 home 目录中，当天（24 小时之内）有改动的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ find ~ -mtime 0</div></pre></td></tr></table></figure>
+<p>列出用户家目录下比 Code 文件夹新的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ find ~ -newer /home/shiyanlou/Code</div></pre></td></tr></table></figure>
+<p>列出在三天前做过改动的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ find ~ -mtime +3</div></pre></td></tr></table></figure>
+<h2 id="文件打包与压缩"><a href="#文件打包与压缩" class="headerlink" title="文件打包与压缩"></a>文件打包与压缩</h2><h3 id="概念讲解"><a href="#概念讲解" class="headerlink" title="概念讲解"></a>概念讲解</h3><p>在讲 Linux 上的压缩工具之前，有必要先了解一下常见常用的压缩包文件格式。在 Windows 上最常见的不外乎这三种 <em>.zip，</em>.rar，<em>.7z 后缀的压缩文件，而在 Linux 上面常见常用的除了以上三种外，还有 </em>.gz，<em>.xz，</em>.bz2，<em>.tar，</em>.tar.gz，<em>.tar.xz，</em>.tar.bz2，简单介绍如下：</p>
+<table><tr><th>文件后缀名</th><th>说明</th></tr><tr><td><code>*.zip</code></td><td>zip 程序打包压缩的文件</td></tr><tr><td><code>*.rar</code></td><td>rar 程序压缩的文件</td></tr><tr><td><code>*.7z</code></td><td>7zip 程序压缩的文件</td></tr><tr><td><code>*.tar</code></td><td>tar 程序打包，未压缩的文件</td></tr><tr><td><code>*.gz</code></td><td>gzip 程序（GNU zip）压缩的文件</td></tr><tr><td><code>*.xz</code></td><td>xz 程序压缩的文件</td></tr><tr><td><code>*.bz2</code></td><td>bzip2 程序压缩的文件</td></tr><tr><td><code>*.tar.gz</code></td><td>tar 打包，gzip 程序压缩的文件</td></tr><tr><td><code>*.tar.bz2</code></td><td>ar 打包，bzip2 程序压缩的文件</td></tr><tr><td><code>*.tar.7z</code></td><td>tar 打包，7z 程序压缩的文件</td></tr></table>
+
+<p>讲了这么多种压缩文件，这么多个命令，不过我们一般只需要掌握几个命令即可，包括 zip，rar，tar。下面会依次介绍这几个命令及对应的解压命令。</p>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><h4 id="zip打包文件与解压文件"><a href="#zip打包文件与解压文件" class="headerlink" title="zip打包文件与解压文件"></a>zip打包文件与解压文件</h4><ul>
+<li>zip：<ul>
+<li>打包 ：zip something.zip something （目录请加 -r 参数）</li>
+<li>解包：unzip something</li>
+<li>指定路径：-d 参数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打包文件</span></div><div class="line">$ zip &lt;打包文件名&gt; &lt;打包文件&gt;</div><div class="line"></div><div class="line"><span class="comment"># 打包文件夹 `-r` 表示递归打包</span></div><div class="line">$ zip -r &lt;打包文件名&gt; &lt;打包文件夹&gt;</div><div class="line"></div><div class="line"><span class="comment"># `-q`安静模式打包</span></div><div class="line">$ zip -q &lt;打包文件名&gt; &lt;打包文件&gt;</div><div class="line"></div><div class="line"><span class="comment"># `-o`表示输出文件</span></div><div class="line">$ zip -r -q -o mZip.zip ~</div><div class="line"></div><div class="line"><span class="comment"># 打包加密文件</span></div><div class="line">$ zip <span class="_">-e</span> -r -q -o mZip.zip ~</div><div class="line"></div><div class="line"><span class="comment"># 如果你想让你在 Linux 创建的 zip 压缩文件在 Windows 上解压后没有任何问题</span></div><div class="line"><span class="comment"># 需要加上 -l 参数将 LF 转换为 CR+LF 来达到以上目的。</span></div><div class="line">$ zip -r <span class="_">-l</span> -o shiyanlou.zip /home/shiyanlou</div></pre></td></tr></table></figure>
+<p><strong>解压文件</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将 shiyanlou.zip 解压到当前目录：</span></div><div class="line">$ unzip shiyanlou.zip</div><div class="line"></div><div class="line"><span class="comment"># 使用安静模式，将文件解压到指定目录：</span></div><div class="line">$ unzip -q shiyanlou.zip <span class="_">-d</span> ziptest</div><div class="line"></div><div class="line"><span class="comment">#指定编码类型,Linux默认的是UTF-8吗，如果有中文的话，会出现中文乱码的现象。 `-O` 参数指定解压编码</span></div><div class="line">$ unzip -O GBK 中文压缩文件.zip</div></pre></td></tr></table></figure></p>
+<h4 id="rar-打包压缩命令"><a href="#rar-打包压缩命令" class="headerlink" title="rar 打包压缩命令"></a>rar 打包压缩命令</h4><p>rar 也是 Windows 上常用的一种压缩文件格式，在 Linux 上可以使用 rar 和 unrar 工具分别创建和解压 rar 压缩包。</p>
+<ul>
+<li>安装 rar 和 unrar 工具：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install rar unrar</div></pre></td></tr></table></figure>
+<ul>
+<li>从指定文件或目录创建压缩包或添加文件到压缩包：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ rm *.zip</div><div class="line">$ rar a shiyanlou.rar .</div></pre></td></tr></table></figure>
+<p>上面的命令使用 a 参数添加一个目录 ～ 到一个归档文件中，如果该文件不存在就会自动创建。</p>
+<p><strong>注意：rar 的命令参数没有 -，如果加上会报错。</strong></p>
+<ul>
+<li>从指定压缩包文件中删除某个文件：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rar d shiyanlou.rar .zshrc</div></pre></td></tr></table></figure>
+<ul>
+<li>查看不解压文件：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rar l shiyanlou.rar</div></pre></td></tr></table></figure>
+<ul>
+<li>使用 unrar 解压 rar 文件</li>
+</ul>
+<p>全路径解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ unrar x shiyanlou.rar</div></pre></td></tr></table></figure>
+<p>去掉路径解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir tmp</div><div class="line">$ unrar e shiyanlou.rar tmp/</div></pre></td></tr></table></figure>
+<p><strong>rar 命令参数非常多，上面只涉及了一些基本操作。</strong></p>
+<h4 id="tar-打包工具"><a href="#tar-打包工具" class="headerlink" title="tar 打包工具"></a>tar 打包工具</h4><ul>
+<li>tar：<ul>
+<li>打包：tar -zcvf something.tar something</li>
+<li>解包：tar -zxvf something.tar</li>
+<li>指定路径：-C 参数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># tar 打包文件</span></div><div class="line">$ tar -zcvf myTar.tar ~</div><div class="line"></div><div class="line"><span class="comment"># tar 解包文件在当前目录</span></div><div class="line"><span class="variable">$tar</span> -zxvf myTar.tar</div><div class="line"></div><div class="line"><span class="comment"># tar 解包文件在指定目录</span></div><div class="line"><span class="variable">$tar</span> -zxvf myTar.tar -C myHome/</div></pre></td></tr></table></figure>
+<p><code>-c</code> 表示创建一个tar包文件,<code>-f</code>用于指定创建的文件名，文件名必须紧跟在<code>-f</code>后面,<code>-x</code>表示解包一个tar文件、</p>
+<h4 id="查看文件大小"><a href="#查看文件大小" class="headerlink" title="查看文件大小"></a>查看文件大小</h4><p>用 du 命令分别查看默认压缩级别、最低、最高压缩级别及未压缩的文件的大小：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看文件大小</span></div><div class="line">$ du mytext.txt</div><div class="line"></div><div class="line"><span class="comment"># 查看目录大小</span></div><div class="line">$ du ~</div><div class="line"></div><div class="line"><span class="comment"># `-h` 带单位输出</span></div><div class="line">$ du -h mttext.txt</div><div class="line"></div><div class="line"><span class="comment"># 同时查看文件大小和目录大小,并进行排序操作</span></div><div class="line">$ du -h myTest.zip ~ |sort</div></pre></td></tr></table></figure>
+<p><strong>学累了，学疲了。休息···等我有心情之后在来更新笔记哈</strong></p>
 
       
     </div>
@@ -664,7 +846,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">1.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符"><span class="nav-number">2.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户及文件权限管理"><span class="nav-number">3.</span> <span class="nav-text">用户及文件权限管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看用户"><span class="nav-number">3.1.</span> <span class="nav-text">查看用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建用户"><span class="nav-number">3.2.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件权限"><span class="nav-number">3.3.</span> <span class="nav-text">文件权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件"><span class="nav-number">3.3.1.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件所有者"><span class="nav-number">3.3.2.</span> <span class="nav-text">修改文件所有者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件权限"><span class="nav-number">3.3.3.</span> <span class="nav-text">修改文件权限</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-目录结构及文件基本操作"><span class="nav-number">4.</span> <span class="nav-text">Linux 目录结构及文件基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-目录结构"><span class="nav-number">4.1.</span> <span class="nav-text">Linux 目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FHS-标准"><span class="nav-number">4.1.1.</span> <span class="nav-text">FHS 标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绝对路径和相对路径"><span class="nav-number">4.1.2.</span> <span class="nav-text">绝对路径和相对路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux文件的基本操作"><span class="nav-number">4.2.</span> <span class="nav-text">linux文件的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建"><span class="nav-number">4.2.1.</span> <span class="nav-text">新建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制"><span class="nav-number">4.2.2.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">4.2.3.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动与重命名"><span class="nav-number">4.2.4.</span> <span class="nav-text">移动与重命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件-1"><span class="nav-number">4.2.5.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑文件"><span class="nav-number">4.2.6.</span> <span class="nav-text">编辑文件</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">1.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符"><span class="nav-number">2.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户及文件权限管理"><span class="nav-number">3.</span> <span class="nav-text">用户及文件权限管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看用户"><span class="nav-number">3.1.</span> <span class="nav-text">查看用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建用户"><span class="nav-number">3.2.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件权限"><span class="nav-number">3.3.</span> <span class="nav-text">文件权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件"><span class="nav-number">3.3.1.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件所有者"><span class="nav-number">3.3.2.</span> <span class="nav-text">修改文件所有者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件权限"><span class="nav-number">3.3.3.</span> <span class="nav-text">修改文件权限</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-目录结构及文件基本操作"><span class="nav-number">4.</span> <span class="nav-text">Linux 目录结构及文件基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-目录结构"><span class="nav-number">4.1.</span> <span class="nav-text">Linux 目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FHS-标准"><span class="nav-number">4.1.1.</span> <span class="nav-text">FHS 标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绝对路径和相对路径"><span class="nav-number">4.1.2.</span> <span class="nav-text">绝对路径和相对路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux文件的基本操作"><span class="nav-number">4.2.</span> <span class="nav-text">linux文件的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新建"><span class="nav-number">4.2.1.</span> <span class="nav-text">新建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制"><span class="nav-number">4.2.2.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除"><span class="nav-number">4.2.3.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动与重命名"><span class="nav-number">4.2.4.</span> <span class="nav-text">移动与重命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件-1"><span class="nav-number">4.2.5.</span> <span class="nav-text">查看文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑文件"><span class="nav-number">4.2.6.</span> <span class="nav-text">编辑文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量与文件查找"><span class="nav-number">5.</span> <span class="nav-text">环境变量与文件查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">5.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量"><span class="nav-number">5.2.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令的查找路径与顺序"><span class="nav-number">5.3.</span> <span class="nav-text">命令的查找路径与顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加自定义路径到-“PATH”-环境变量"><span class="nav-number">5.4.</span> <span class="nav-text">添加自定义路径到 “PATH” 环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改和删除已有变量"><span class="nav-number">5.5.</span> <span class="nav-text">修改和删除已有变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量修改"><span class="nav-number">5.5.1.</span> <span class="nav-text">变量修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量删除"><span class="nav-number">5.5.2.</span> <span class="nav-text">变量删除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何让环境变量立即生效"><span class="nav-number">5.6.</span> <span class="nav-text">如何让环境变量立即生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索文件"><span class="nav-number">5.7.</span> <span class="nav-text">搜索文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件打包与压缩"><span class="nav-number">6.</span> <span class="nav-text">文件打包与压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念讲解"><span class="nav-number">6.1.</span> <span class="nav-text">概念讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战"><span class="nav-number">6.2.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#zip打包文件与解压文件"><span class="nav-number">6.2.1.</span> <span class="nav-text">zip打包文件与解压文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rar-打包压缩命令"><span class="nav-number">6.2.2.</span> <span class="nav-text">rar 打包压缩命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tar-打包工具"><span class="nav-number">6.2.3.</span> <span class="nav-text">tar 打包工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件大小"><span class="nav-number">6.2.4.</span> <span class="nav-text">查看文件大小</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
