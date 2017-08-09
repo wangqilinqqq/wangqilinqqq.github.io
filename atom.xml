@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-19T08:07:14.449Z</updated>
+  <updated>2017-08-03T10:21:23.140Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,150 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>MySQL学习笔记</title>
+    <link href="http://yoursite.com/2017/07/28/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2017/07/28/MySQL学习笔记/</id>
+    <published>2017-07-28T03:11:11.000Z</published>
+    <updated>2017-08-03T10:21:23.140Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>MySQL简介</strong></p>
+<p>MySQL 是一个 DBMS（数据库管理系统），由瑞典 MySQLAB 公司开发，目前属于 Oracle 公司，MySQL 是最流行的关系型数据库管理系统（关系数据库，是建立在关系数据库模型基础上的数据库，借助于集合代数等概念和方法来处理数据库中的数据）。由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发者都选择 MySQL 作为网站数据库。MySQL 使用 SQL 语言进行操作。</p>
+<a id="more"></a>
+<p><strong>笔记开始</strong></p>
+<h2 id="MySQL基本指令"><a href="#MySQL基本指令" class="headerlink" title="MySQL基本指令"></a>MySQL基本指令</h2><blockquote>
+<p>启动MySQL<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 启动 MySQL 服务</span></div><div class="line">sudo service mysql start</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>登录MySql<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用 root 用户登录，实验楼环境的密码为空，直接回车就可以登录</span></div><div class="line">mysql -u root</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>查看数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看数据库</span></div><div class="line">show databases;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>创建数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># CREATE DATABASE &lt;数据库名字&gt;;</span></div><div class="line">CREATE DATABASE mysql_shiyan;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>连接数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 选择连接其中一个数据库，语句格式为 use &lt;数据库名&gt;</span></div><div class="line">use information_schema</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<hr>
+<blockquote>
+<p>查看表<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用命令 show tables; 查看数据库中有哪些表（**注意不要漏掉";"**）：</span></div><div class="line">show tables;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>新建数据表<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE 表的名字</div><div class="line">(</div><div class="line">列名a 数据类型(数据长度),</div><div class="line">列名b 数据类型(数据长度)，</div><div class="line">列名c 数据类型(数据长度)</div><div class="line">);</div><div class="line"></div><div class="line"><span class="comment"># 我们尝试在 mysql_shiyan 中新建一张表 employee，包含姓名，ID 和电话信息，所以语句为：</span></div><div class="line">CREATE TABLE employee (id int(10),name char(20),phone int(12));</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>MySQL的数据类型</p>
+<table><tr><th>数据类型</th><th>大小(字节)</th><th>用途</th><th>格式</th></tr><tr><td>INT</td><td>4</td><td>整数</td><td></td></tr><tr><td>FLOAT</td><td>4</td><td>单精度浮点数</td><td></td></tr><tr><td>DOUBLE</td><td>8</td><td>双精度浮点数</td><td></td></tr><tr><td>ENUM</td><td></td><td>单选,比如性别</td><td>ENUM(‘a’,’b’,’c’)</td></tr><tr><td>SET</td><td></td><td>多选</td><td>SET(‘1’,’2’,’3’)</td></tr><tr><td>DATE</td><td>3</td><td>日期</td><td>YYYY-MM-DD</td></tr><tr><td>TIME</td><td>3</td><td>时间点或持续时间</td><td>HH:MM:SS</td></tr><tr><td>YEAR</td><td>1</td><td>年份值</td><td>YYYY</td></tr><tr><td>CHAR</td><td>0~255</td><td>定长字符串</td><td></td></tr><tr><td>VARCHAR</td><td>0~255</td><td>变长字符串</td><td></td></tr><tr><td>TEXT</td><td>0~65535</td><td>长文本数据</td><td></td></tr></table>
+
+</blockquote>
+<p><strong>CHAR 和 VARCHAR</strong> 的区别: CHAR 的长度是固定的，而 VARCHAR 的长度是可以变化的，比如，存储字符串 “abc”，对于 CHAR(10)，表示存储的字符将占 10 个字节(包括 7 个空字符)，而同样的 VARCHAR(12) 则只占用4个字节的长度，增加一个额外字节来存储字符串本身的长度，12 只是最大值，当你存储的字符小于 12 时，按实际长度存储。</p>
+<p><strong>ENUM和SET的区别</strong>: ENUM 类型的数据的值，必须是定义时枚举的值的其中之一，即单选，而 SET 类型的值则可以多选。</p>
+<hr>
+<blockquote>
+<p>插入数据<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">INSERT INTO 表的名字(列名a,列名b,列名c) VALUES(值1,值2,值3);</div><div class="line"></div><div class="line"><span class="comment"># 我们尝试向 employee 中加入 Tom、Jack 和 Rose：</span></div><div class="line">INSERT INTO employee(id,name,phone) VALUES(01,<span class="string">'Tom'</span>,110110110);</div><div class="line"></div><div class="line">INSERT INTO employee VALUES(02,<span class="string">'Jack'</span>,119119119);</div><div class="line"></div><div class="line">INSERT INTO employee(id,name) VALUES(03,<span class="string">'Rose'</span>);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="MySQL约束"><a href="#MySQL约束" class="headerlink" title="MySQL约束"></a>MySQL约束</h2><table><tr><th>约束类型：</th><th>主键</th><th>默认值</th><th>唯一</th><th>外键</th><th>非空</th></tr><tr><td>关键字：</td><td>PRIMARY KEY</td><td>DEFAULT</td><td>UNIQUE</td><td>FOREIGN KEY</td><td>NOT NULL</td></tr></table>
+
+<h3 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h3><blockquote>
+<p>主键就是一张数据表中唯一的值，比如用户信息表的 ID,商品表的 SKU。都是唯一的，不重复的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 直接在后面定义主键-主键名即列名</span></div><div class="line">CREATE TABLE employee</div><div class="line">(</div><div class="line">id	INT(10)PRIMARY KEY,</div><div class="line">name char(20)</div><div class="line">);</div><div class="line"></div><div class="line"><span class="comment"># 自定义主键名称-主键的名称是自定义的</span></div><div class="line">CREATE TABLE department</div><div class="line">(</div><div class="line">  dpt_name   CHAR(20),</div><div class="line">  people_num INT(10),</div><div class="line">  CONSTRAINT dpt_pk PRIMARY KEY (dpt_name)</div><div class="line"> );</div><div class="line"></div><div class="line"><span class="comment"># 复合主键-由表的二列或多列组成的复合主键，即这2列的值都是唯一的，不重复的。</span></div><div class="line">CREATE TABLE project</div><div class="line">(</div><div class="line">  proj_num   INT(10),</div><div class="line">  proj_name  CHAR(20),</div><div class="line">  CONSTRAINT proj_pk PRIMARY KEY (proj_num,proj_name)</div><div class="line"> );</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h3><blockquote>
+<p>外键就是以另一个表的主键来约束自己这一列。<br>一个表可以有多个外键，每个外键必须参考另一个表的主键。<br>被外键约束的列，取值必须在它参考的列中有取值。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE department</div><div class="line">(</div><div class="line">  dpt_name   CHAR(20) NOT NULL,</div><div class="line">  people_num INT(10) DEFAULT <span class="string">'10'</span>,</div><div class="line">  CONSTRAINT dpt_pk PRIMARY KEY (dpt_name)</div><div class="line"> );</div><div class="line"></div><div class="line">CREATE TABLE employee</div><div class="line">(</div><div class="line">  id      INT(10) PRIMARY KEY,</div><div class="line">  in_dpt  CHAR(20) NOT NULL,</div><div class="line">  CONSTRAINT emp_fk FOREIGN KEY (in_dpt) REFERENCES department(dpt_name)</div><div class="line">  <span class="comment">#   自定义外键名称    in_dpt为外键    参考的是department表的dpt_name列</span></div><div class="line"> );</div><div class="line"></div><div class="line"><span class="comment"># 如果在employee表中存一行数据</span></div><div class="line"><span class="comment"># 如果in_dpt列所对应的值在对应表department的dpt_name列没有对应值</span></div><div class="line"><span class="comment"># 那么就会报错，无法成功插入数据。</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="SELECT语句详解"><a href="#SELECT语句详解" class="headerlink" title="SELECT语句详解"></a>SELECT语句详解</h2><h3 id="基本的SELECT语句"><a href="#基本的SELECT语句" class="headerlink" title="基本的SELECT语句"></a>基本的SELECT语句</h3><blockquote>
+<p>SELECT 语句的基本格式为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">SELECT 要查询的列名 FROM 表名字 WHERE 限制条件;</div><div class="line"></div><div class="line"><span class="comment"># * 代表查看所有</span></div><div class="line"></div><div class="line">SELECT name,age FROM employee;</div><div class="line"></div><div class="line"><span class="comment"># 而大多数情况，我们只需要查看某个表的指定的列</span></div><div class="line"><span class="comment"># 比如要查看employee 表的 name 和 age：</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="数学符号条件"><a href="#数学符号条件" class="headerlink" title="数学符号条件"></a>数学符号条件</h3><blockquote>
+<p>SELECT 语句常常会有 WHERE 限制条件，用于达到更加精确的查询。<br>WHERE限制条件可以有数学符号 (=,&lt;,&gt;,&gt;=,&lt;=) ，刚才我们查询了 name 和 age，现在稍作修改：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 筛选出 age 大于 25：</span></div><div class="line">SELECT name,age FROM employee WHERE age&gt;25;</div><div class="line"></div><div class="line"><span class="comment"># 或者查找一个名字为 Mary 的员工的 name,age 和 phone：</span></div><div class="line">SELECT name,age,phone FROM employee WHERE name=<span class="string">'Mary'</span>;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="“AND”与“OR”"><a href="#“AND”与“OR”" class="headerlink" title="“AND”与“OR”"></a>“AND”与“OR”</h3><blockquote>
+<p>从这两个单词就能够理解它们的作用。WHERE 后面可以有不止一条限制，<br>而根据条件之间的逻辑关系，可以用 OR(或) 和 AND(且) 连接：<br>AND-&gt;且<br>OR-&gt;或<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#筛选出 age 小于 25，或 age 大于 30</span></div><div class="line">SELECT name,age FROM employee WHERE age&lt;25 OR age&gt;30;</div><div class="line"></div><div class="line"><span class="comment">#筛选出 age 大于 25，且 age 小于 30</span></div><div class="line">SELECT name,age FROM employee WHERE age&gt;25 AND age&lt;30;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="IN-和-NOT-IN"><a href="#IN-和-NOT-IN" class="headerlink" title="IN 和 NOT IN"></a>IN 和 NOT IN</h3><blockquote>
+<p>关键词IN和NOT IN的作用和它们的名字一样明显，<br>用于筛选“在”或“不在”某个范围内的结果<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#比如说我们要查询在dpt3或dpt4的人:</span></div><div class="line">SELECT name,age,phone,in_dpt FROM employee WHERE in_dpt IN (<span class="string">'dpt3'</span>,<span class="string">'dpt4'</span>);</div><div class="line"></div><div class="line"><span class="comment">#而NOT IN的效果则是，如下面这条命令，查询出了不在dpt1也不在dpt3的人：</span></div><div class="line">SELECT name,age,phone,in_dpt FROM employee WHERE in_dpt NOT IN (<span class="string">'dpt1'</span>,<span class="string">'dpt3'</span>);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><blockquote>
+<p>关键字 LIKE 在SQL语句中和通配符一起使用，通配符代表未知字符。<br>SQL中的通配符是<code>_</code>和 <code>%</code> 。其中<code>_</code>代表一个未指定字符，<code>%</code>代表不定个未指定字符。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#比如，要只记得电话号码前四位数为1101，</span></div><div class="line"><span class="comment">#而后两位忘记了，则可以用两个 _ 通配符代替：</span></div><div class="line">SELECT name,age,phone FROM employee WHERE phone LIKE <span class="string">'1101__'</span>;</div><div class="line"></div><div class="line"><span class="comment">#另一种情况，比如只记名字的首字母，又不知道名字长度，</span></div><div class="line"><span class="comment">#则用 % 通配符代替不定个字符：</span></div><div class="line">SELECT name,age,phone FROM employee WHERE name LIKE <span class="string">'J%'</span>;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="对结果排序"><a href="#对结果排序" class="headerlink" title="对结果排序"></a>对结果排序</h3><blockquote>
+<p>为了使查询结果看起来更顺眼，我们可能需要对结果按某一列来排序，这就要用到 ORDER BY 排序关键词。<br>默认情况下，ORDER BY的结果是升序排列，而使用关键词ASC和DESC可指定升序或降序排序。<br>ASC-&gt;升<br>DESC-&gt;降<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#比如，我们按salary降序排列，SQL语句为：</span></div><div class="line">SELECT name,age,salary,phone FROM employee ORDER BY salary DESC;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="SQL-内置函数和计算"><a href="#SQL-内置函数和计算" class="headerlink" title="SQL 内置函数和计算"></a>SQL 内置函数和计算</h3><p>SQL 允许对表中的数据进行计算。对此，SQL 有 5 个内置函数，这些函数都对 SELECT 的结果做操作：</p>
+<table><tr><th>函数名：</th><th>COUNT</th><th>SUM</th><th>AVG</th><th>MAX</th><th>MIN</th></tr><tr><td>作用：</td><td>计数</td><td>求和</td><td>求平均值</td><td>最大值</td><td>最小值</td></tr></table>
+
+<blockquote>
+<p>其中 COUNT 函数可用于任何数据类型(因为它只是计数)，而 SUM 、AVG 函数都只能对数字类数据类型做计算，MAX 和 MIN 可用于数值、字符串或是日期时间数据类型。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#具体举例，比如计算出salary的最大、最小值，用这样的一条语句：</span></div><div class="line">SELECT MAX(salary) AS max_salary,MIN(salary) FROM employee;</div><div class="line"></div><div class="line"><span class="comment">#使用AS关键词可以给值重命名，比如最大值被命名为了max_salary：</span></div></pre></td></tr></table></figure>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><blockquote>
+<p>上面讨论的 SELECT 语句都仅涉及一个表中的数据，然而有时必须处理多个表才能获得所需的信息。例如：想要知道名为 “Tom” 的员工所在部门做了几个工程。员工信息储存在 employee 表中，但工程信息储存在project 表中。<br>对于这样的情况，我们可以用子查询：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">SELECT of_dpt,COUNT(proj_name) AS count_project FROM project</div><div class="line">WHERE of_dpt IN</div><div class="line">(SELECT in_dpt FROM employee WHERE name=<span class="string">'Tom'</span>);</div><div class="line"></div><div class="line"><span class="comment"># 这条SQL语句的重点是后面这部分 WHERE of_dpt IN (SELECT in_dpt FROM employee WHERE name='Tom');</span></div><div class="line"><span class="comment"># 表示的是只显示 of_dpt列有 dpt4的行</span></div><div class="line"><span class="comment"># SELECT in_dpt FROM employee WHERE name='Tom' 这个查询到的值 为 dpt4</span></div><div class="line"><span class="comment"># 所以这条SQL语句其实是:</span></div><div class="line"><span class="comment"># SELECT of_dpt,COUNT(proj_name) AS count_project FROM project WHERE of_dpt IN('dpt4');</span></div></pre></td></tr></table></figure></p>
+<p>子查询还可以扩展到3层、4层或更多层。</p>
+</blockquote>
+<h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><blockquote>
+<p>在处理多个表时，子查询只有在结果来自一个表时才有用。但如果需要显示两个表或多个表中的数据，这时就必须使用连接 (join) 操作。<br>连接的基本思想是把两个或多个表当作一个新的表来操作，如下：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">SELECT id,name,people_num</div><div class="line">FROM employee,department</div><div class="line">WHERE employee.in_dpt = department.dpt_name</div><div class="line">ORDER BY id;</div><div class="line"></div><div class="line"><span class="comment">#这条语句查询出的是，各员工所在部门的人数，</span></div><div class="line"><span class="comment">#其中员工的 id 和 name 来自 employee 表，</span></div><div class="line"><span class="comment">#people_num 来自 department 表：</span></div><div class="line"></div><div class="line"><span class="comment"># SQL语句详解:遇到子查询或者连接查询的时候，要习惯拆分。弄懂每一部分，在连接起来理解</span></div><div class="line"><span class="comment"># 这条SQL语句的意思是，在employee表和department表两个表中查询 id、name、people_num 三列</span></div><div class="line"><span class="comment"># 并只显示 employee表中in_dpt列等于pepartment表中dpt_name列的数据</span></div><div class="line"></div><div class="line"><span class="comment">#另一种</span></div><div class="line">SELECT id,name,people_num</div><div class="line">FROM employee JOIN department</div><div class="line">ON employee.in_dpt = department.dpt_name</div><div class="line">ORDER BY id;</div></pre></td></tr></table></figure>
+<h2 id="数据库及表的删除与修改"><a href="#数据库及表的删除与修改" class="headerlink" title="数据库及表的删除与修改"></a>数据库及表的删除与修改</h2><h3 id="对数据库的修改"><a href="#对数据库的修改" class="headerlink" title="对数据库的修改"></a>对数据库的修改</h3><h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><blockquote>
+<p>删除数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP DATABASE mysql_shiyan;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<h3 id="对表的修改"><a href="#对表的修改" class="headerlink" title="对表的修改"></a>对表的修改</h3><h4 id="表的重命名"><a href="#表的重命名" class="headerlink" title="表的重命名"></a>表的重命名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">RENAME TABLE &lt;原名&gt; TO &lt;新名&gt;；</div></pre></td></tr></table></figure>
+<h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">DROP TABLE &lt;表名字&gt;;</div></pre></td></tr></table></figure>
+<h3 id="对一列的修改"><a href="#对一列的修改" class="headerlink" title="对一列的修改"></a>对一列的修改</h3><h4 id="增加一列"><a href="#增加一列" class="headerlink" title="增加一列"></a>增加一列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE &lt;表的名字&gt; ADD &lt;列的名字&gt; &lt;数据类型&gt; &lt;约束&gt;</div><div class="line"></div><div class="line"># 如果想把新增的一列放在某列的后面 需要加 after</div><div class="line"></div><div class="line">ALTER TABLE &lt;表的名字&gt; ADD &lt;列的名字&gt; &lt;数据类型&gt; &lt;约束&gt; AFTER &lt;列的名字&gt;</div><div class="line"></div><div class="line"># 如果想把新增的一列放在表的第一列的话 需要加 first参数</div><div class="line"></div><div class="line">ALTER TABLE &lt;表的名字&gt; ADD &lt;列的名字&gt; &lt;数据类型&gt; &lt;约束&gt; AFTER &lt;列的名字&gt;</div></pre></td></tr></table></figure>
+<h4 id="删除一列"><a href="#删除一列" class="headerlink" title="删除一列"></a>删除一列</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE &lt;表名字&gt; drop &lt;列名字&gt;</div></pre></td></tr></table></figure>
+<h4 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE &lt;表名字&gt; CHANGE &lt;原名字&gt; &lt;新名字&gt; &lt;数据类型&gt; &lt;约束&gt;</div></pre></td></tr></table></figure>
+<h3 id="对表内容的修改"><a href="#对表内容的修改" class="headerlink" title="对表内容的修改"></a>对表内容的修改</h3><h4 id="修改表中的某个值"><a href="#修改表中的某个值" class="headerlink" title="修改表中的某个值"></a>修改表中的某个值</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">UPDATE &lt;表名字&gt; SET 列1=值1，列2=值2 WHERT &lt;限制条件&gt;</div><div class="line"></div><div class="line"><span class="comment"># 比如我想把 employee 表中，id为8的行里面的电话号码改为3838438</span></div><div class="line"></div><div class="line">UPDATE employee SET phone=3838438 <span class="built_in">where</span> id=8;</div></pre></td></tr></table></figure>
+<h4 id="修改表的一行"><a href="#修改表的一行" class="headerlink" title="修改表的一行"></a>修改表的一行</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">DELETE FROM &lt;表的名字&gt; WHERE &lt;限制条件&gt;</div><div class="line"></div><div class="line"><span class="comment"># 比如我想把 employee 表中，id为8的行删除</span></div><div class="line"></div><div class="line">DELETE FROM employee WHERE id=8;</div></pre></td></tr></table></figure>
+<h2 id="其他基本操作"><a href="#其他基本操作" class="headerlink" title="其他基本操作"></a>其他基本操作</h2><p>索引：可以加快查询速度<br>视图：是一种虚拟存在的表<br>导入：从文件中导入数据到表<br>导出：从表中导出到文件中<br>备份：mysqldump 备份数据库到文件<br>恢复：从文件恢复数据库</p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><blockquote>
+<p>对一张表中的某个列建立索引，有以下两种语句格式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE 表名字 ADD INDEX 索引名 (列名);</div><div class="line"></div><div class="line">CREATE INDEX 索引名 ON 表名字 (列名);</div><div class="line"></div><div class="line"><span class="comment"># 我们用这两种语句分别建立索引：</span></div><div class="line"></div><div class="line">ALTER TABLE employee ADD INDEX idx_id (id);  <span class="comment">#在employee表的id列上建立名为idx_id的索引</span></div><div class="line"></div><div class="line">CREATE INDEX idx_name ON employee (name);   <span class="comment">#在employee表的name列上建立名为idx_name的索引</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>注意理解视图是虚拟的表：</p>
+<blockquote>
+<p>创建视图的语句格式为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE VIEW 视图名(列a,列b,列c) AS SELECT 列1,列2,列3 FROM 表名字;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
+<p>导入操作，可以把一个文件里的数据保存进一张表。导入语句格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LOAD DATA INFILE &apos;文件路径&apos; INTO TABLE 表名字;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><blockquote>
+<p>导出与导入是相反的过程，是把数据库某个表中的数据保存到一个文件之中。导出语句基本格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SELECT 列1，列2 INTO OUTFILE &apos;文件路径和文件名&apos; FROM 表名字;</div><div class="line"></div><div class="line"># 现在我们把整个employee表的数据导出到 /tmp 目录下，导出文件命名为 out.txt 具体语句为：</div><div class="line"></div><div class="line">SELECT * INTO OUTFILE &apos;/tmp/out.txt&apos; FROM employee;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root 数据库名&gt;备份文件名;   #备份整个数据库</div><div class="line"></div><div class="line">mysqldump -u root 数据库名 表名字&gt;备份文件名;  #备份整个表</div><div class="line"></div><div class="line"># 我们尝试备份整个数据库 mysql_shiyan，将备份文件命名为 bak.sql，</div><div class="line"># 先 Ctrl+Z 退出 MySQL 控制台，再打开 Xfce 终端，在终端中输入命令：</div><div class="line">mysqldump -u root mysql_shiyan &gt; bak.sql;</div></pre></td></tr></table></figure>
+<h3 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 用备份文件恢复数据库，其实我们早就使用过了。</div><div class="line"># 在本次实验的开始，我们使用过这样一条命令</div><div class="line">source /tmp/SQL6/MySQL-06.sql</div></pre></td></tr></table></figure>
+<p>还有另一种方式恢复数据库，但是在这之前我们先使用命令新建一个空的数据库 test：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql -u root          #因为在上一步已经退出了MySQL，现在需要重新登录</div><div class="line"></div><div class="line">CREATE DATABASE test;  #新建一个名为test的数据库</div></pre></td></tr></table></figure>
+<p>再次 Ctrl+Z 退出MySQL，然后输入语句进行恢复，把刚才备份的 bak.sql 恢复到 test 数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root test &lt; bak.sql</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;MySQL简介&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;MySQL 是一个 DBMS（数据库管理系统），由瑞典 MySQLAB 公司开发，目前属于 Oracle 公司，MySQL 是最流行的关系型数据库管理系统（关系数据库，是建立在关系数据库模型基础上的数据库，借助于集合代数等概念和方法来处理数据库中的数据）。由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发者都选择 MySQL 作为网站数据库。MySQL 使用 SQL 语言进行操作。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux学习笔记</title>
     <link href="http://yoursite.com/2017/07/17/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2017/07/17/linux学习笔记/</id>
     <published>2017-07-17T07:16:46.000Z</published>
-    <updated>2017-07-19T08:07:14.449Z</updated>
+    <updated>2017-08-02T05:58:25.210Z</updated>
     
     <content type="html"><![CDATA[<p><strong>Linux简介</strong></p>
 <p>相对于现在的 Windows 系统，UNIX/Linux 本身是没有图形界面的，我们通常在 UNIX/Linux 发行版上看到的图形界面实际都只是运行在 Linux 系统之上的一套软件，类似 Windows95 之前的 Windows 的图形界面实则也只是运行在 DOS 环境的一套软件。<a id="more"></a>而 Linux 上的这套软件以前是 XFree86，现在则是 xorg（X.Org），而这套软件又是通过 X 窗口系统（X Window System，也常被称为 X11 或 X）实现的，X 本身只是工具包及架构协议，而 xorg 便是 X 架构规范的一个实现体，也就是说它是实现了 X 协议规范的一个提供图形界面服务的服务器，就像实现了 http 协议提供 web 服务的 Apache 。如果只有服务器也是不能实现一个完整的桌面环境的，当然还需要一个客户端，我们称为 X Client，像如下几个大家熟知也最流行的实现了客户端功能的桌面环境 KDE，GNOME，XFCE，LXDE 。其中就有你看到的，实验楼目前使用的 XFCE 桌面环境，部分老用户可能可以回想起，实验楼之前使用的环境是 LXDE 。这也意味着在 Linux 上你可以自己选择安装不同的桌面环境，甚至可以定制自己的专属桌面。</p>
@@ -106,7 +245,7 @@
 <blockquote>
 <p>删除目录</p>
 </blockquote>
-<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 跟复制目录一样，要删除一个目录，也需要加上 -r 或 -R 参数：</span></div><div class="line">$ rm -r &lt;catalogue name&gt;</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 跟复制目录一样，要删除一个目录，也需要加上 -r 或 -R 参数：</span></div><div class="line">$ rm -r &lt;catalogue name&gt;</div><div class="line"></div><div class="line"><span class="comment"># 当目录为非空的时候 -r 参数就很苦恼了 使用 -rf 可快速删除</span></div><div class="line"><span class="comment"># rm -rf &lt;catalogue name&gt;</span></div></pre></td></tr></table></figure>
 </code></pre><h4 id="移动与重命名"><a href="#移动与重命名" class="headerlink" title="移动与重命名"></a>移动与重命名</h4><blockquote>
 <p>移动文件</p>
 </blockquote>
