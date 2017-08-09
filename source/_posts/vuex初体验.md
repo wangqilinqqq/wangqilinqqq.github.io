@@ -1,8 +1,8 @@
 ---
 title: Vuex初体验
 date: 2017-03-30 15:16:46
-categories: Vuex
-tags: Vuex
+categories: Vue
+tags: Vue
 ---
 ## 概述
 

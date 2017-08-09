@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-12T03:18:12.308Z</updated>
+  <updated>2017-08-03T10:21:23.140Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,463 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL学习笔记</title>
+    <link href="http://yoursite.com/2017/07/28/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2017/07/28/MySQL学习笔记/</id>
+    <published>2017-07-28T03:11:11.000Z</published>
+    <updated>2017-08-03T10:21:23.140Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>MySQL简介</strong></p>
+<p>MySQL 是一个 DBMS（数据库管理系统），由瑞典 MySQLAB 公司开发，目前属于 Oracle 公司，MySQL 是最流行的关系型数据库管理系统（关系数据库，是建立在关系数据库模型基础上的数据库，借助于集合代数等概念和方法来处理数据库中的数据）。由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发者都选择 MySQL 作为网站数据库。MySQL 使用 SQL 语言进行操作。</p>
+<a id="more"></a>
+<p><strong>笔记开始</strong></p>
+<h2 id="MySQL基本指令"><a href="#MySQL基本指令" class="headerlink" title="MySQL基本指令"></a>MySQL基本指令</h2><blockquote>
+<p>启动MySQL<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 启动 MySQL 服务</span></div><div class="line">sudo service mysql start</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>登录MySql<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用 root 用户登录，实验楼环境的密码为空，直接回车就可以登录</span></div><div class="line">mysql -u root</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>查看数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看数据库</span></div><div class="line">show databases;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>创建数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># CREATE DATABASE &lt;数据库名字&gt;;</span></div><div class="line">CREATE DATABASE mysql_shiyan;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>连接数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 选择连接其中一个数据库，语句格式为 use &lt;数据库名&gt;</span></div><div class="line">use information_schema</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<hr>
+<blockquote>
+<p>查看表<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用命令 show tables; 查看数据库中有哪些表（**注意不要漏掉";"**）：</span></div><div class="line">show tables;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>新建数据表<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE 表的名字</div><div class="line">(</div><div class="line">列名a 数据类型(数据长度),</div><div class="line">列名b 数据类型(数据长度)，</div><div class="line">列名c 数据类型(数据长度)</div><div class="line">);</div><div class="line"></div><div class="line"><span class="comment"># 我们尝试在 mysql_shiyan 中新建一张表 employee，包含姓名，ID 和电话信息，所以语句为：</span></div><div class="line">CREATE TABLE employee (id int(10),name char(20),phone int(12));</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>MySQL的数据类型</p>
+<table><tr><th>数据类型</th><th>大小(字节)</th><th>用途</th><th>格式</th></tr><tr><td>INT</td><td>4</td><td>整数</td><td></td></tr><tr><td>FLOAT</td><td>4</td><td>单精度浮点数</td><td></td></tr><tr><td>DOUBLE</td><td>8</td><td>双精度浮点数</td><td></td></tr><tr><td>ENUM</td><td></td><td>单选,比如性别</td><td>ENUM(‘a’,’b’,’c’)</td></tr><tr><td>SET</td><td></td><td>多选</td><td>SET(‘1’,’2’,’3’)</td></tr><tr><td>DATE</td><td>3</td><td>日期</td><td>YYYY-MM-DD</td></tr><tr><td>TIME</td><td>3</td><td>时间点或持续时间</td><td>HH:MM:SS</td></tr><tr><td>YEAR</td><td>1</td><td>年份值</td><td>YYYY</td></tr><tr><td>CHAR</td><td>0~255</td><td>定长字符串</td><td></td></tr><tr><td>VARCHAR</td><td>0~255</td><td>变长字符串</td><td></td></tr><tr><td>TEXT</td><td>0~65535</td><td>长文本数据</td><td></td></tr></table>
+
+</blockquote>
+<p><strong>CHAR 和 VARCHAR</strong> 的区别: CHAR 的长度是固定的，而 VARCHAR 的长度是可以变化的，比如，存储字符串 “abc”，对于 CHAR(10)，表示存储的字符将占 10 个字节(包括 7 个空字符)，而同样的 VARCHAR(12) 则只占用4个字节的长度，增加一个额外字节来存储字符串本身的长度，12 只是最大值，当你存储的字符小于 12 时，按实际长度存储。</p>
+<p><strong>ENUM和SET的区别</strong>: ENUM 类型的数据的值，必须是定义时枚举的值的其中之一，即单选，而 SET 类型的值则可以多选。</p>
+<hr>
+<blockquote>
+<p>插入数据<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">INSERT INTO 表的名字(列名a,列名b,列名c) VALUES(值1,值2,值3);</div><div class="line"></div><div class="line"><span class="comment"># 我们尝试向 employee 中加入 Tom、Jack 和 Rose：</span></div><div class="line">INSERT INTO employee(id,name,phone) VALUES(01,<span class="string">'Tom'</span>,110110110);</div><div class="line"></div><div class="line">INSERT INTO employee VALUES(02,<span class="string">'Jack'</span>,119119119);</div><div class="line"></div><div class="line">INSERT INTO employee(id,name) VALUES(03,<span class="string">'Rose'</span>);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="MySQL约束"><a href="#MySQL约束" class="headerlink" title="MySQL约束"></a>MySQL约束</h2><table><tr><th>约束类型：</th><th>主键</th><th>默认值</th><th>唯一</th><th>外键</th><th>非空</th></tr><tr><td>关键字：</td><td>PRIMARY KEY</td><td>DEFAULT</td><td>UNIQUE</td><td>FOREIGN KEY</td><td>NOT NULL</td></tr></table>
+
+<h3 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h3><blockquote>
+<p>主键就是一张数据表中唯一的值，比如用户信息表的 ID,商品表的 SKU。都是唯一的，不重复的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 直接在后面定义主键-主键名即列名</span></div><div class="line">CREATE TABLE employee</div><div class="line">(</div><div class="line">id	INT(10)PRIMARY KEY,</div><div class="line">name char(20)</div><div class="line">);</div><div class="line"></div><div class="line"><span class="comment"># 自定义主键名称-主键的名称是自定义的</span></div><div class="line">CREATE TABLE department</div><div class="line">(</div><div class="line">  dpt_name   CHAR(20),</div><div class="line">  people_num INT(10),</div><div class="line">  CONSTRAINT dpt_pk PRIMARY KEY (dpt_name)</div><div class="line"> );</div><div class="line"></div><div class="line"><span class="comment"># 复合主键-由表的二列或多列组成的复合主键，即这2列的值都是唯一的，不重复的。</span></div><div class="line">CREATE TABLE project</div><div class="line">(</div><div class="line">  proj_num   INT(10),</div><div class="line">  proj_name  CHAR(20),</div><div class="line">  CONSTRAINT proj_pk PRIMARY KEY (proj_num,proj_name)</div><div class="line"> );</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h3><blockquote>
+<p>外键就是以另一个表的主键来约束自己这一列。<br>一个表可以有多个外键，每个外键必须参考另一个表的主键。<br>被外键约束的列，取值必须在它参考的列中有取值。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE department</div><div class="line">(</div><div class="line">  dpt_name   CHAR(20) NOT NULL,</div><div class="line">  people_num INT(10) DEFAULT <span class="string">'10'</span>,</div><div class="line">  CONSTRAINT dpt_pk PRIMARY KEY (dpt_name)</div><div class="line"> );</div><div class="line"></div><div class="line">CREATE TABLE employee</div><div class="line">(</div><div class="line">  id      INT(10) PRIMARY KEY,</div><div class="line">  in_dpt  CHAR(20) NOT NULL,</div><div class="line">  CONSTRAINT emp_fk FOREIGN KEY (in_dpt) REFERENCES department(dpt_name)</div><div class="line">  <span class="comment">#   自定义外键名称    in_dpt为外键    参考的是department表的dpt_name列</span></div><div class="line"> );</div><div class="line"></div><div class="line"><span class="comment"># 如果在employee表中存一行数据</span></div><div class="line"><span class="comment"># 如果in_dpt列所对应的值在对应表department的dpt_name列没有对应值</span></div><div class="line"><span class="comment"># 那么就会报错，无法成功插入数据。</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="SELECT语句详解"><a href="#SELECT语句详解" class="headerlink" title="SELECT语句详解"></a>SELECT语句详解</h2><h3 id="基本的SELECT语句"><a href="#基本的SELECT语句" class="headerlink" title="基本的SELECT语句"></a>基本的SELECT语句</h3><blockquote>
+<p>SELECT 语句的基本格式为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">SELECT 要查询的列名 FROM 表名字 WHERE 限制条件;</div><div class="line"></div><div class="line"><span class="comment"># * 代表查看所有</span></div><div class="line"></div><div class="line">SELECT name,age FROM employee;</div><div class="line"></div><div class="line"><span class="comment"># 而大多数情况，我们只需要查看某个表的指定的列</span></div><div class="line"><span class="comment"># 比如要查看employee 表的 name 和 age：</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="数学符号条件"><a href="#数学符号条件" class="headerlink" title="数学符号条件"></a>数学符号条件</h3><blockquote>
+<p>SELECT 语句常常会有 WHERE 限制条件，用于达到更加精确的查询。<br>WHERE限制条件可以有数学符号 (=,&lt;,&gt;,&gt;=,&lt;=) ，刚才我们查询了 name 和 age，现在稍作修改：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 筛选出 age 大于 25：</span></div><div class="line">SELECT name,age FROM employee WHERE age&gt;25;</div><div class="line"></div><div class="line"><span class="comment"># 或者查找一个名字为 Mary 的员工的 name,age 和 phone：</span></div><div class="line">SELECT name,age,phone FROM employee WHERE name=<span class="string">'Mary'</span>;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="“AND”与“OR”"><a href="#“AND”与“OR”" class="headerlink" title="“AND”与“OR”"></a>“AND”与“OR”</h3><blockquote>
+<p>从这两个单词就能够理解它们的作用。WHERE 后面可以有不止一条限制，<br>而根据条件之间的逻辑关系，可以用 OR(或) 和 AND(且) 连接：<br>AND-&gt;且<br>OR-&gt;或<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#筛选出 age 小于 25，或 age 大于 30</span></div><div class="line">SELECT name,age FROM employee WHERE age&lt;25 OR age&gt;30;</div><div class="line"></div><div class="line"><span class="comment">#筛选出 age 大于 25，且 age 小于 30</span></div><div class="line">SELECT name,age FROM employee WHERE age&gt;25 AND age&lt;30;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="IN-和-NOT-IN"><a href="#IN-和-NOT-IN" class="headerlink" title="IN 和 NOT IN"></a>IN 和 NOT IN</h3><blockquote>
+<p>关键词IN和NOT IN的作用和它们的名字一样明显，<br>用于筛选“在”或“不在”某个范围内的结果<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#比如说我们要查询在dpt3或dpt4的人:</span></div><div class="line">SELECT name,age,phone,in_dpt FROM employee WHERE in_dpt IN (<span class="string">'dpt3'</span>,<span class="string">'dpt4'</span>);</div><div class="line"></div><div class="line"><span class="comment">#而NOT IN的效果则是，如下面这条命令，查询出了不在dpt1也不在dpt3的人：</span></div><div class="line">SELECT name,age,phone,in_dpt FROM employee WHERE in_dpt NOT IN (<span class="string">'dpt1'</span>,<span class="string">'dpt3'</span>);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><blockquote>
+<p>关键字 LIKE 在SQL语句中和通配符一起使用，通配符代表未知字符。<br>SQL中的通配符是<code>_</code>和 <code>%</code> 。其中<code>_</code>代表一个未指定字符，<code>%</code>代表不定个未指定字符。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#比如，要只记得电话号码前四位数为1101，</span></div><div class="line"><span class="comment">#而后两位忘记了，则可以用两个 _ 通配符代替：</span></div><div class="line">SELECT name,age,phone FROM employee WHERE phone LIKE <span class="string">'1101__'</span>;</div><div class="line"></div><div class="line"><span class="comment">#另一种情况，比如只记名字的首字母，又不知道名字长度，</span></div><div class="line"><span class="comment">#则用 % 通配符代替不定个字符：</span></div><div class="line">SELECT name,age,phone FROM employee WHERE name LIKE <span class="string">'J%'</span>;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="对结果排序"><a href="#对结果排序" class="headerlink" title="对结果排序"></a>对结果排序</h3><blockquote>
+<p>为了使查询结果看起来更顺眼，我们可能需要对结果按某一列来排序，这就要用到 ORDER BY 排序关键词。<br>默认情况下，ORDER BY的结果是升序排列，而使用关键词ASC和DESC可指定升序或降序排序。<br>ASC-&gt;升<br>DESC-&gt;降<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#比如，我们按salary降序排列，SQL语句为：</span></div><div class="line">SELECT name,age,salary,phone FROM employee ORDER BY salary DESC;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="SQL-内置函数和计算"><a href="#SQL-内置函数和计算" class="headerlink" title="SQL 内置函数和计算"></a>SQL 内置函数和计算</h3><p>SQL 允许对表中的数据进行计算。对此，SQL 有 5 个内置函数，这些函数都对 SELECT 的结果做操作：</p>
+<table><tr><th>函数名：</th><th>COUNT</th><th>SUM</th><th>AVG</th><th>MAX</th><th>MIN</th></tr><tr><td>作用：</td><td>计数</td><td>求和</td><td>求平均值</td><td>最大值</td><td>最小值</td></tr></table>
+
+<blockquote>
+<p>其中 COUNT 函数可用于任何数据类型(因为它只是计数)，而 SUM 、AVG 函数都只能对数字类数据类型做计算，MAX 和 MIN 可用于数值、字符串或是日期时间数据类型。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#具体举例，比如计算出salary的最大、最小值，用这样的一条语句：</span></div><div class="line">SELECT MAX(salary) AS max_salary,MIN(salary) FROM employee;</div><div class="line"></div><div class="line"><span class="comment">#使用AS关键词可以给值重命名，比如最大值被命名为了max_salary：</span></div></pre></td></tr></table></figure>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><blockquote>
+<p>上面讨论的 SELECT 语句都仅涉及一个表中的数据，然而有时必须处理多个表才能获得所需的信息。例如：想要知道名为 “Tom” 的员工所在部门做了几个工程。员工信息储存在 employee 表中，但工程信息储存在project 表中。<br>对于这样的情况，我们可以用子查询：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">SELECT of_dpt,COUNT(proj_name) AS count_project FROM project</div><div class="line">WHERE of_dpt IN</div><div class="line">(SELECT in_dpt FROM employee WHERE name=<span class="string">'Tom'</span>);</div><div class="line"></div><div class="line"><span class="comment"># 这条SQL语句的重点是后面这部分 WHERE of_dpt IN (SELECT in_dpt FROM employee WHERE name='Tom');</span></div><div class="line"><span class="comment"># 表示的是只显示 of_dpt列有 dpt4的行</span></div><div class="line"><span class="comment"># SELECT in_dpt FROM employee WHERE name='Tom' 这个查询到的值 为 dpt4</span></div><div class="line"><span class="comment"># 所以这条SQL语句其实是:</span></div><div class="line"><span class="comment"># SELECT of_dpt,COUNT(proj_name) AS count_project FROM project WHERE of_dpt IN('dpt4');</span></div></pre></td></tr></table></figure></p>
+<p>子查询还可以扩展到3层、4层或更多层。</p>
+</blockquote>
+<h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><blockquote>
+<p>在处理多个表时，子查询只有在结果来自一个表时才有用。但如果需要显示两个表或多个表中的数据，这时就必须使用连接 (join) 操作。<br>连接的基本思想是把两个或多个表当作一个新的表来操作，如下：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">SELECT id,name,people_num</div><div class="line">FROM employee,department</div><div class="line">WHERE employee.in_dpt = department.dpt_name</div><div class="line">ORDER BY id;</div><div class="line"></div><div class="line"><span class="comment">#这条语句查询出的是，各员工所在部门的人数，</span></div><div class="line"><span class="comment">#其中员工的 id 和 name 来自 employee 表，</span></div><div class="line"><span class="comment">#people_num 来自 department 表：</span></div><div class="line"></div><div class="line"><span class="comment"># SQL语句详解:遇到子查询或者连接查询的时候，要习惯拆分。弄懂每一部分，在连接起来理解</span></div><div class="line"><span class="comment"># 这条SQL语句的意思是，在employee表和department表两个表中查询 id、name、people_num 三列</span></div><div class="line"><span class="comment"># 并只显示 employee表中in_dpt列等于pepartment表中dpt_name列的数据</span></div><div class="line"></div><div class="line"><span class="comment">#另一种</span></div><div class="line">SELECT id,name,people_num</div><div class="line">FROM employee JOIN department</div><div class="line">ON employee.in_dpt = department.dpt_name</div><div class="line">ORDER BY id;</div></pre></td></tr></table></figure>
+<h2 id="数据库及表的删除与修改"><a href="#数据库及表的删除与修改" class="headerlink" title="数据库及表的删除与修改"></a>数据库及表的删除与修改</h2><h3 id="对数据库的修改"><a href="#对数据库的修改" class="headerlink" title="对数据库的修改"></a>对数据库的修改</h3><h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><blockquote>
+<p>删除数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP DATABASE mysql_shiyan;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<h3 id="对表的修改"><a href="#对表的修改" class="headerlink" title="对表的修改"></a>对表的修改</h3><h4 id="表的重命名"><a href="#表的重命名" class="headerlink" title="表的重命名"></a>表的重命名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">RENAME TABLE &lt;原名&gt; TO &lt;新名&gt;；</div></pre></td></tr></table></figure>
+<h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">DROP TABLE &lt;表名字&gt;;</div></pre></td></tr></table></figure>
+<h3 id="对一列的修改"><a href="#对一列的修改" class="headerlink" title="对一列的修改"></a>对一列的修改</h3><h4 id="增加一列"><a href="#增加一列" class="headerlink" title="增加一列"></a>增加一列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE &lt;表的名字&gt; ADD &lt;列的名字&gt; &lt;数据类型&gt; &lt;约束&gt;</div><div class="line"></div><div class="line"># 如果想把新增的一列放在某列的后面 需要加 after</div><div class="line"></div><div class="line">ALTER TABLE &lt;表的名字&gt; ADD &lt;列的名字&gt; &lt;数据类型&gt; &lt;约束&gt; AFTER &lt;列的名字&gt;</div><div class="line"></div><div class="line"># 如果想把新增的一列放在表的第一列的话 需要加 first参数</div><div class="line"></div><div class="line">ALTER TABLE &lt;表的名字&gt; ADD &lt;列的名字&gt; &lt;数据类型&gt; &lt;约束&gt; AFTER &lt;列的名字&gt;</div></pre></td></tr></table></figure>
+<h4 id="删除一列"><a href="#删除一列" class="headerlink" title="删除一列"></a>删除一列</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE &lt;表名字&gt; drop &lt;列名字&gt;</div></pre></td></tr></table></figure>
+<h4 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE &lt;表名字&gt; CHANGE &lt;原名字&gt; &lt;新名字&gt; &lt;数据类型&gt; &lt;约束&gt;</div></pre></td></tr></table></figure>
+<h3 id="对表内容的修改"><a href="#对表内容的修改" class="headerlink" title="对表内容的修改"></a>对表内容的修改</h3><h4 id="修改表中的某个值"><a href="#修改表中的某个值" class="headerlink" title="修改表中的某个值"></a>修改表中的某个值</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">UPDATE &lt;表名字&gt; SET 列1=值1，列2=值2 WHERT &lt;限制条件&gt;</div><div class="line"></div><div class="line"><span class="comment"># 比如我想把 employee 表中，id为8的行里面的电话号码改为3838438</span></div><div class="line"></div><div class="line">UPDATE employee SET phone=3838438 <span class="built_in">where</span> id=8;</div></pre></td></tr></table></figure>
+<h4 id="修改表的一行"><a href="#修改表的一行" class="headerlink" title="修改表的一行"></a>修改表的一行</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">DELETE FROM &lt;表的名字&gt; WHERE &lt;限制条件&gt;</div><div class="line"></div><div class="line"><span class="comment"># 比如我想把 employee 表中，id为8的行删除</span></div><div class="line"></div><div class="line">DELETE FROM employee WHERE id=8;</div></pre></td></tr></table></figure>
+<h2 id="其他基本操作"><a href="#其他基本操作" class="headerlink" title="其他基本操作"></a>其他基本操作</h2><p>索引：可以加快查询速度<br>视图：是一种虚拟存在的表<br>导入：从文件中导入数据到表<br>导出：从表中导出到文件中<br>备份：mysqldump 备份数据库到文件<br>恢复：从文件恢复数据库</p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><blockquote>
+<p>对一张表中的某个列建立索引，有以下两种语句格式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE 表名字 ADD INDEX 索引名 (列名);</div><div class="line"></div><div class="line">CREATE INDEX 索引名 ON 表名字 (列名);</div><div class="line"></div><div class="line"><span class="comment"># 我们用这两种语句分别建立索引：</span></div><div class="line"></div><div class="line">ALTER TABLE employee ADD INDEX idx_id (id);  <span class="comment">#在employee表的id列上建立名为idx_id的索引</span></div><div class="line"></div><div class="line">CREATE INDEX idx_name ON employee (name);   <span class="comment">#在employee表的name列上建立名为idx_name的索引</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><p>注意理解视图是虚拟的表：</p>
+<blockquote>
+<p>创建视图的语句格式为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE VIEW 视图名(列a,列b,列c) AS SELECT 列1,列2,列3 FROM 表名字;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
+<p>导入操作，可以把一个文件里的数据保存进一张表。导入语句格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LOAD DATA INFILE &apos;文件路径&apos; INTO TABLE 表名字;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><blockquote>
+<p>导出与导入是相反的过程，是把数据库某个表中的数据保存到一个文件之中。导出语句基本格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SELECT 列1，列2 INTO OUTFILE &apos;文件路径和文件名&apos; FROM 表名字;</div><div class="line"></div><div class="line"># 现在我们把整个employee表的数据导出到 /tmp 目录下，导出文件命名为 out.txt 具体语句为：</div><div class="line"></div><div class="line">SELECT * INTO OUTFILE &apos;/tmp/out.txt&apos; FROM employee;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysqldump -u root 数据库名&gt;备份文件名;   #备份整个数据库</div><div class="line"></div><div class="line">mysqldump -u root 数据库名 表名字&gt;备份文件名;  #备份整个表</div><div class="line"></div><div class="line"># 我们尝试备份整个数据库 mysql_shiyan，将备份文件命名为 bak.sql，</div><div class="line"># 先 Ctrl+Z 退出 MySQL 控制台，再打开 Xfce 终端，在终端中输入命令：</div><div class="line">mysqldump -u root mysql_shiyan &gt; bak.sql;</div></pre></td></tr></table></figure>
+<h3 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 用备份文件恢复数据库，其实我们早就使用过了。</div><div class="line"># 在本次实验的开始，我们使用过这样一条命令</div><div class="line">source /tmp/SQL6/MySQL-06.sql</div></pre></td></tr></table></figure>
+<p>还有另一种方式恢复数据库，但是在这之前我们先使用命令新建一个空的数据库 test：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql -u root          #因为在上一步已经退出了MySQL，现在需要重新登录</div><div class="line"></div><div class="line">CREATE DATABASE test;  #新建一个名为test的数据库</div></pre></td></tr></table></figure>
+<p>再次 Ctrl+Z 退出MySQL，然后输入语句进行恢复，把刚才备份的 bak.sql 恢复到 test 数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root test &lt; bak.sql</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;MySQL简介&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;MySQL 是一个 DBMS（数据库管理系统），由瑞典 MySQLAB 公司开发，目前属于 Oracle 公司，MySQL 是最流行的关系型数据库管理系统（关系数据库，是建立在关系数据库模型基础上的数据库，借助于集合代数等概念和方法来处理数据库中的数据）。由于其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发者都选择 MySQL 作为网站数据库。MySQL 使用 SQL 语言进行操作。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux学习笔记</title>
+    <link href="http://yoursite.com/2017/07/17/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2017/07/17/linux学习笔记/</id>
+    <published>2017-07-17T07:16:46.000Z</published>
+    <updated>2017-08-02T05:58:25.210Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>Linux简介</strong></p>
+<p>相对于现在的 Windows 系统，UNIX/Linux 本身是没有图形界面的，我们通常在 UNIX/Linux 发行版上看到的图形界面实际都只是运行在 Linux 系统之上的一套软件，类似 Windows95 之前的 Windows 的图形界面实则也只是运行在 DOS 环境的一套软件。<a id="more"></a>而 Linux 上的这套软件以前是 XFree86，现在则是 xorg（X.Org），而这套软件又是通过 X 窗口系统（X Window System，也常被称为 X11 或 X）实现的，X 本身只是工具包及架构协议，而 xorg 便是 X 架构规范的一个实现体，也就是说它是实现了 X 协议规范的一个提供图形界面服务的服务器，就像实现了 http 协议提供 web 服务的 Apache 。如果只有服务器也是不能实现一个完整的桌面环境的，当然还需要一个客户端，我们称为 X Client，像如下几个大家熟知也最流行的实现了客户端功能的桌面环境 KDE，GNOME，XFCE，LXDE 。其中就有你看到的，实验楼目前使用的 XFCE 桌面环境，部分老用户可能可以回想起，实验楼之前使用的环境是 LXDE 。这也意味着在 Linux 上你可以自己选择安装不同的桌面环境，甚至可以定制自己的专属桌面。</p>
+<p><strong>笔记开始</strong></p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><blockquote>
+<p>Ctrl+d —- 键盘输入结束或退出终端<br>Ctrl+s —- 暂停当前程序，暂停后按下任意键恢复运行<br>Ctrl+z —- 将当前程序放到后台运行，恢复到前台为命令fg<br>Ctrl+a —- 将光标移至输入行头，相当于Home键<br>Ctrl+e —- 将光标移至输入行末，相当于End键<br>Ctrl+k —- 删除从光标所在位置到行末<br>Alt+Backspace —- 向前删除一个单词<br>Shift+PgUp —- 将终端显示向上滚动<br>Shift+PgDn —- 将终端显示向下滚动</p>
+</blockquote>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><blockquote>
+<p>* —- 匹配 0 或多个字符<br>? —- 匹配任意一个字符<br>[list] —- 匹配 list 中的任意单一字符<br>[!list] —- 匹配 除list 中的任意单一字符以外的字符<br>[c1-c2] —- 匹配 c1-c2 中的任意单一字符 如：[0-9] [a-z]<br>{string1,string2,…} —- 匹配 string1 或 string2 (或更多)其一字符串<br>{c1..c2} —- 匹配 c1-c2 中全部字符 如{1..10}</p>
+</blockquote>
+<h2 id="用户及文件权限管理"><a href="#用户及文件权限管理" class="headerlink" title="用户及文件权限管理"></a>用户及文件权限管理</h2><h3 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ who am i</div></pre></td></tr></table></figure>
+<p>who 命令其它常用参数</p>
+<blockquote>
+<p>参数 —- 说明<br>-a —- 打印能打印的全部<br>-d —- 打印死掉的进程<br>-m —- 同am i,mom likes<br>-q —- 打印当前登录用户数及用户名<br>-u —- 打印当前登录用户登录信息<br>-r —- 打印运行等级</p>
+</blockquote>
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p>sudo su su-  介绍</p>
+<p><code>su &lt;user</code>可以切换到用户 user，执行时需要输入目标用户的密码，<code>sudo &lt;cmd</code>可以以特权级别运行 cmd 命令，需要当前用户属于 sudo 组，且需要输入当前用户的密码。<code>su - &lt;user</code>命令也是切换用户，同时环境变量也会跟着改变成目标用户的环境变量。</p>
+<p><strong>注:所有使用 <code>sudo</code>和<code>su</code> 命令的用户都必须在 sudo用户组才能正常使用sudo命令</strong></p>
+<p>新建用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo adduser &lt;user name&gt;</div></pre></td></tr></table></figure>
+<p>切换用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ su <span class="_">-l</span> &lt;user name&gt;</div></pre></td></tr></table></figure>
+<p>查看用户组</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ groups &lt;user name&gt;</div></pre></td></tr></table></figure>
+<p>将其他用户加入到sudo组</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo usermod -G sudo &lt;user name&gt;</div></pre></td></tr></table></figure>
+<p><strong>只有在sudo组内的用户才有权限拉人</strong></p>
+<p>删除用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo deluser &lt;user name&gt; --remove-home</div></pre></td></tr></table></figure>
+<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><h4 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h4><p>查看文件的详细信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls <span class="_">-l</span></div></pre></td></tr></table></figure>
+<p>输出示例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">drwxrwxrwx 2 shiyanlou shiyanlou 4096 7月 17 14:00 1.txt</div><div class="line"><span class="comment"># 文件类型和权限 链接数 所有者 所属组 文件大小 最后修改日期 文件名</span></div></pre></td></tr></table></figure>
+<p>文件类型和权限详解</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drwxrwxrwx</div></pre></td></tr></table></figure>
+<p>可分解为四组<br>第一个字母为一组<br>第二至第四为一组<br>第五至第七位一组<br>第八至第十位一组    </p>
+<p>第一组:<br>‘d’表示目录<br>‘l’表示软链接<br>‘b’表示块设备<br>‘c’表示字符设备<br>‘s’socket<br>‘p’管道<br>‘-‘普通文件</p>
+<p>第二组:表示的是所有者权限<br>第三组:表示用户组权限<br>第四组:表示其他用户权限</p>
+<p>r-代表读权限<br>w-代表写权限<br>x-代表执行权限</p>
+<h4 id="修改文件所有者"><a href="#修改文件所有者" class="headerlink" title="修改文件所有者"></a>修改文件所有者</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo chown &lt;user&gt; &lt;file name&gt;</div></pre></td></tr></table></figure>
+<p><strong>注:所有使用 sudo 指令的用户都必须在sudo组才能使用 sudo 指令</strong></p>
+<h4 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 700 &lt;file name&gt;</div></pre></td></tr></table></figure>
+<p>一个完整rwx 为 7</p>
+<p>只可执行 1<br>只可写 2<br>可执行可写 3<br>只可读 4<br>可执行可读 5<br>可写可读 6<br>可写可读可执行 7    </p>
+<h2 id="Linux-目录结构及文件基本操作"><a href="#Linux-目录结构及文件基本操作" class="headerlink" title="Linux 目录结构及文件基本操作"></a>Linux 目录结构及文件基本操作</h2><h3 id="Linux-目录结构"><a href="#Linux-目录结构" class="headerlink" title="Linux 目录结构"></a>Linux 目录结构</h3><h4 id="FHS-标准"><a href="#FHS-标准" class="headerlink" title="FHS 标准"></a>FHS 标准</h4><p><strong>如果觉得图片不清晰，建议另存为到本地放大查看：</strong></p>
+<p><img src="/images/linux/logoblackfont.png" alt="Alt text" title="FHS 标准"></p>
+<h4 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h4><p>这个不需要记,记几个linux命令即可</p>
+<blockquote>
+<p>打印当前绝对路径</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">pwd</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>输出隐藏文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls <span class="_">-a</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>进入home目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ~</div></pre></td></tr></table></figure>
+<h3 id="linux文件的基本操作"><a href="#linux文件的基本操作" class="headerlink" title="linux文件的基本操作"></a>linux文件的基本操作</h3><h4 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h4><blockquote>
+<p>创建文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ touch &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>新建目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir  &lt;catalogue name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>带 <code>-p</code> 参数可同时创建父目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir -p father/son/grandson</div></pre></td></tr></table></figure>
+<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><blockquote>
+<blockquote>
+<p>复制文件<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cp &lt;file name&gt; &lt;path&gt;</div></pre></td></tr></table></figure></p>
+<p>复制目录<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 需要加上 -r 或者 -R 参数，表示递归复制，注：复制 father目录 到 family目录下</span></div><div class="line">$ cp -r father family</div></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>强制删除</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm <span class="_">-f</span> &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>删除目录</p>
+</blockquote>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 跟复制目录一样，要删除一个目录，也需要加上 -r 或 -R 参数：</span></div><div class="line">$ rm -r &lt;catalogue name&gt;</div><div class="line"></div><div class="line"><span class="comment"># 当目录为非空的时候 -r 参数就很苦恼了 使用 -rf 可快速删除</span></div><div class="line"><span class="comment"># rm -rf &lt;catalogue name&gt;</span></div></pre></td></tr></table></figure>
+</code></pre><h4 id="移动与重命名"><a href="#移动与重命名" class="headerlink" title="移动与重命名"></a>移动与重命名</h4><blockquote>
+<p>移动文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mv &lt;源目录文件&gt; &lt;目的目录&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>文件重命名</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mv &lt;旧的文件名&gt; &lt;新的文件名&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>批量重命名</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用通配符批量创建 5 个文件:</span></div><div class="line">$ touch file&#123;1..5&#125;.txt</div><div class="line"></div><div class="line"><span class="comment"># 批量将这 5 个后缀为 .txt 的文本文件重命名为以 .c 为后缀的文件:</span></div><div class="line">$ rename <span class="string">'s/\.txt/\.c/'</span> *.txt</div><div class="line"></div><div class="line"><span class="comment"># 批量将这 5 个文件，文件名改为大写:</span></div><div class="line">$ rename <span class="string">'y/a-z/A-Z/'</span> *.c</div></pre></td></tr></table></figure>
+<h4 id="查看文件-1"><a href="#查看文件-1" class="headerlink" title="查看文件"></a>查看文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cat &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>查看并显示行号</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cat -n &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>nl</code> 命令。添加行号并打印</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -b : 指定添加行号的方式，主要有两种：</span></div><div class="line"><span class="comment">#     -b a:表示无论是否为空行，同样列出行号("cat -n"就是这种方式)</span></div><div class="line"><span class="comment">#     -b t:只列出非空行的编号并列出（默认为这种方式）</span></div><div class="line"><span class="comment"># -n : 设置行号的样式，主要有三种：</span></div><div class="line"><span class="comment">#     -n ln:在行号字段最左端显示</span></div><div class="line"><span class="comment">#     -n rn:在行号字段最右边显示，且不加 0</span></div><div class="line"><span class="comment">#     -n rz:在行号字段最右边显示，且加 0</span></div><div class="line"><span class="comment"># -w : 行号字段占用的位数(默认为 6 位)</span></div><div class="line"></div><div class="line">$ nl -b <span class="_">-a</span> &lt;file name&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用 <code>more</code> 查看文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ more &lt;file name&gt;</div><div class="line"><span class="comment"># 打开后默认只显示一屏内容，终端底部显示当前阅读的进度。</span></div><div class="line"><span class="comment"># 可以使用 Enter 键向下滚动一行，使用 Space 键向下滚动一屏，</span></div><div class="line"><span class="comment"># 按下 h 显示帮助，q 退出。</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用 <code>head</code> 和 <code>tail</code> 命令查看文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 只查看文件的头几行和尾几行</span></div><div class="line">$ tail &lt;file name&gt;</div><div class="line"></div><div class="line"><span class="comment"># 甚至更直接的只看一行， 加上 -n 参数，后面紧跟行数：</span></div><div class="line">$ tail -n 1 &lt;file name&gt;</div><div class="line"></div><div class="line"><span class="comment"># 关于 tail 命令，不得不提的还有它一个很牛的参数 -f，</span></div><div class="line"><span class="comment"># 这个参数可以实现不停地读取某个文件的内容并显示。</span></div><div class="line"><span class="comment"># 这可以让我们动态查看日志，达到实时监视的目的。</span></div></pre></td></tr></table></figure>
+<h4 id="编辑文件"><a href="#编辑文件" class="headerlink" title="编辑文件"></a>编辑文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim &lt;file name&gt;</div></pre></td></tr></table></figure>
+<h2 id="环境变量与文件查找"><a href="#环境变量与文件查找" class="headerlink" title="环境变量与文件查找"></a>环境变量与文件查找</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p>创建变量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">declare</span> tmp</div></pre></td></tr></table></figure>
+<blockquote>
+<p>赋值变量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ tmp=shiyanlou</div></pre></td></tr></table></figure>
+<blockquote>
+<p>读取变量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="variable">$tmp</span></div></pre></td></tr></table></figure>
+<p><strong>可以既用既创建， <code>declare</code> 在声明其他类型的变量时会用到。读取变量 <code>$</code> 符号不要忘记， <code>$</code> 表示引用一个变量</strong></p>
+<p><strong>注意：并不是任何形式的变量名都是可用的，变量名只能是英文字母、数字或者下划线，且不能以数字作为开头。</strong></p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>通常我们会涉及到的变量类型有三种：</p>
+<ul>
+<li>当前 Shell 进程私有用户自定义变量，如上面我们创建的 tmp 变量，只在当前 Shell 中有效。</li>
+<li>Shell 本身内建的变量。</li>
+<li>从自定义变量导出的环境变量。</li>
+</ul>
+<blockquote>
+<p>也有三个与上述三种环境变量相关的命令：set，env，export。这三个命令很相似，都是用于打印环境变量信息，区别在于涉及的变量范围不同。详见下表：</p>
+</blockquote>
+<table><tr><th>命令</th><th>说明</th></tr><tr><td>set</td><td>显示当前 Shell 所有变量，包括其内建环境变量（与 Shell 外观等相关），用户自定义变量及导出的环境变量。</td></tr><tr><td>env</td><td>显示与当前用户相关的环境变量，还可以让命令在指定环境中运行。</td></tr><tr><td>export</td><td>显示从 Shell 中导出成环境变量的变量，也能通过它将自定义变量导出为环境变量。</td></tr></table>
+
+<blockquote>
+<p>关于哪些变量是环境变量，可以简单地理解成在当前进程的子进程有效则为环境变量，否则不是（有些人也将所有变量统称为环境变量，只是以全局环境变量和局部环境变量进行区分，我们只要理解它们的实质区别即可）。我们这里用 export 命令来体会一下，先在 Shell 中设置一个变量 temp=shiyanlou，然后再新创建一个子 Shell 查看 temp 变量的值：</p>
+</blockquote>
+<p><img src="/images/linux/logoblackfont_1.png" alt="Alt text"></p>
+<p><strong>永久生效</strong></p>
+<p>但是问题来了，当你关机后，或者关闭当前的 shell 之后，环境变量就没了啊。怎么才能让环境变量永久生效呢？</p>
+<p>按变量的生存周期来划分，Linux 变量可分为两类：</p>
+<ul>
+<li><p>永久的：需要修改配置文件，变量永久生效；</p>
+</li>
+<li><p>临时的：使用 export 命令行声明即可，变量在关闭 shell 时失效。</p>
+</li>
+</ul>
+<p>这里介绍两个重要文件 /etc/bashrc（有的 Linux 没有这个文件） 和 /etc/profile ，它们分别存放的是 shell 变量和环境变量。还有要注意区别的是每个用户目录下的一个隐藏文件：</p>
+<p>这个 .profile 只对当前用户永久生效。而写在 /etc/profile 里面的是对所有用户永久生效，所以如果想要添加一个永久生效的环境变量，只需要打开 /etc/profile，在最后加上你想添加的环境变量就好啦。</p>
+<h3 id="命令的查找路径与顺序"><a href="#命令的查找路径与顺序" class="headerlink" title="命令的查找路径与顺序"></a>命令的查找路径与顺序</h3><p>你可能很早之前就有疑问，我们在 Shell 中输入一个命令，Shell 是怎么知道去哪找到这个命令然后执行的呢？这是通过环境变量 PATH 来进行搜索的，熟悉 Windows 的用户可能知道 Windows 中的也是有这么一个 PATH 环境变量。这个 PATH 里面就保存了 Shell 中执行的命令的搜索路径</p>
+<blockquote>
+<p>查看 <code>PATH</code>变量</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>下面我们将练习创建一个最简单的可执行 Shell 脚本和一个使用 C 语言创建的“ hello world ”程序，如果这两部分内容你之前没有学习过，那么你可以进行一个入门学习：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># gedit 是linux里面的一个文本编辑器</span></div><div class="line">$ gedit hello_shell.sh</div></pre></td></tr></table></figure>
+<p>在脚本中添加如下内容，保存并退出（注意不要省掉第一行，这不是注释，论坛有用户反映有语法错误，就是因为没有了第一行）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> ((i=0; i&lt;10; i++));<span class="keyword">do</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"hello shell"</span></div><div class="line"><span class="keyword">done</span></div><div class="line"></div><div class="line"><span class="built_in">exit</span> 0</div></pre></td></tr></table></figure>
+<p>为文件添加可执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 755 hello_shell.sh</div></pre></td></tr></table></figure>
+<p>执行脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./hello_shell.sh</div></pre></td></tr></table></figure>
+<p>创建一个 C 语言“ hello world ”程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gedit hello_world.c</div></pre></td></tr></table></figure>
+<p>编辑脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;stdio.h&gt;</span></div><div class="line"></div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!\n"</span>);</div><div class="line">    <span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>保存后使用 gcc 生成可执行文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gcc -o hello_world hello_world.c</div></pre></td></tr></table></figure>
+<blockquote>
+<p>gcc 生成二进制文件默认具有可执行权限，不需要修改</p>
+</blockquote>
+<p>在 shiyanlou 家目录创建一个 mybin 目录，并将上述 hello_shell.sh 和 hello_world 文件移动到其中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir mybin</div><div class="line">$ mv hello_shell.sh hello_world mybin/</div></pre></td></tr></table></figure>
+<p>现在你可以在 mybin 目录中分别运行你刚刚创建的两个程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> mybin</div><div class="line">$ ./hello_shell.sh</div><div class="line">$ ./hello_world</div></pre></td></tr></table></figure>
+<p>回到上一级目录，也就是 shiyanlou 家目录，当再想运行那两个程序时，会发现提示命令找不到，除非加上命令的完整路径，但那样很不方便，如何做到想使用系统命令一样执行自己创建的脚本文件或者程序呢？那就要将命令所在路径添加到 PATH 环境变量了。</p>
+<h3 id="添加自定义路径到-“PATH”-环境变量"><a href="#添加自定义路径到-“PATH”-环境变量" class="headerlink" title="添加自定义路径到 “PATH” 环境变量"></a>添加自定义路径到 “PATH” 环境变量</h3><p>在前面我们应该注意到 PATH 里面的路径是以 : 作为分割符的，所以我们可以这样添加自定义路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ PATH=<span class="variable">$PATH</span>:/home/shiyanlou/mybin</div></pre></td></tr></table></figure>
+<p><strong>注意这里一定要使用绝对路径。</strong></p>
+<p>现在你就可以在任意目录执行那两个命令了（注意需要去掉前面的 ./）。你可能会意识到这样还并没有很好的解决问题，因为我给 PATH 环境变量追加了一个路径，它也只是在当前 Shell 有效，我一旦退出终端，再打开就会发现又失效了。有没有方法让添加的环境变量全局有效？或者每次启动 Shell 时自动执行上面添加自定义路径到 PATH 的命令？下面我们就来说说后一种方式——让它自动执行。</p>
+<p>在每个用户的 home 目录中有一个 Shell 每次启动时会默认执行一个配置脚本，以初始化环境，包括添加一些用户自定义环境变量等等。zsh 的配置文件是 .zshrc，相应 Bash 的配置文件为 .bashrc 。它们在 etc 下还都有一个或多个全局的配置文件，不过我们一般只修改用户目录下的配置文件。</p>
+<p>我们可以简单地使用下面命令直接添加内容到 .zshrc 中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"PATH=<span class="variable">$PATH</span>:/home/shiyanlou/mybin"</span> &gt;&gt; .zshrc</div></pre></td></tr></table></figure>
+<p><strong>上述命令中<code>&gt;&gt;</code> 表示将标准输出以追加的方式重定向到一个文件中，注意前面用到的 <code>&gt;</code> 是以覆盖的方式重定向到一个文件中，使用的时候一定要注意分辨。在指定文件不存在的情况下都会创建新的文件。</strong></p>
+<h3 id="修改和删除已有变量"><a href="#修改和删除已有变量" class="headerlink" title="修改和删除已有变量"></a>修改和删除已有变量</h3><h4 id="变量修改"><a href="#变量修改" class="headerlink" title="变量修改"></a>变量修改</h4><p>变量的修改有以下几种方式：</p>
+<table><tr><th>变量设置方式</th><th>说明</th></tr><tr><td><code>${变量名#匹配字串}</code></td><td>从头向后开始匹配，删除符合匹配字串的最短数据</td></tr><tr><td><code>${变量名##匹配字串}</code></td><td>从头向后开始匹配，删除符合匹配字串的最长数据</td></tr><tr><td><code>${变量名%匹配字串}</code></td><td>从尾向前开始匹配，删除符合匹配字串的最短数据</td></tr><tr><td><code>${变量名%%匹配字串}</code></td><td>从尾向前开始匹配，删除符合匹配字串的最长数据</td></tr><tr><td><code>${变量名/旧的字串/新的字串}</code></td><td>将符合旧字串的第一个字串替换为新的字串</td></tr><tr><td><code>${变量名//旧的字串/新的字串}</code></td><td>将符合旧字串的全部字串替换为新的字串</td></tr></table>
+
+<p>比如修改自定义变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建变量</span></div><div class="line">$ w=wangqilin</div><div class="line"><span class="comment"># 输出变量</span></div><div class="line">$ <span class="built_in">echo</span> <span class="variable">$w</span></div><div class="line"><span class="comment"># 匹配字母w替换为大写W</span></div><div class="line">$ w=<span class="variable">$&#123;w/w/W/&#125;</span></div></pre></td></tr></table></figure>
+<h4 id="变量删除"><a href="#变量删除" class="headerlink" title="变量删除"></a>变量删除</h4><p>可以使用 unset 命令删除一个环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">unset</span> temp</div></pre></td></tr></table></figure>
+<h3 id="如何让环境变量立即生效"><a href="#如何让环境变量立即生效" class="headerlink" title="如何让环境变量立即生效"></a>如何让环境变量立即生效</h3><p>前面我们在 Shell 中修改了一个配置脚本文件之后（比如 zsh 的配置文件 home 目录下的 .zshrc），每次都要退出终端重新打开甚至重启主机之后其才能生效，很是麻烦，我们可以使用 source 命令来让其立即生效，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> .zshrc</div></pre></td></tr></table></figure>
+<h3 id="搜索文件"><a href="#搜索文件" class="headerlink" title="搜索文件"></a>搜索文件</h3><ul>
+<li>whereis 简单快速</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ whereis who</div></pre></td></tr></table></figure>
+<p>whereis 只能搜索二进制文件(-b)，man 帮助文件(-m)和源代码文件(-s)。</p>
+<ul>
+<li>locate 快而全</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 寻找etc目录下sh开头的文件</span></div><div class="line">$ locate /etc/sh</div><div class="line"></div><div class="line"><span class="comment"># 使用通配符寻找</span></div><div class="line">$ locate /usr/share/\*.jpg</div></pre></td></tr></table></figure>
+<p><strong>如果想只统计数目可以加上 <code>-c</code> 参数，<code>-i</code> 参数可以忽略大小写进行查找，<code>whereis</code> 的 <code>-b</code>、<code>-m</code>、 <code>-m</code>同样可以使用。</strong></p>
+<ul>
+<li>which 小而精</li>
+</ul>
+<p><code>which</code> 本身是 <code>Shell</code> 内建的一个命令，我们通常使用 <code>which</code> 来确定是否安装了某个指定的软件，因为它只从 <code>PATH</code> 环境变量指定的路径中去搜索命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">which</span> man</div></pre></td></tr></table></figure>
+<ul>
+<li>find 精而细<br>find 应该是这几个命令中最强大的了，它不但可以通过文件类型、文件名进行查找而且可以根据文件的属性（如文件的时间戳，文件的权限等）进行搜索。find 命令强大到，要把它讲明白至少需要单独好几节课程才行，我们这里只介绍一些常用的内容。</li>
+</ul>
+<p>这条命令表示去 /etc/ 目录下面 ，搜索名字叫做 interfaces 的文件或者目录。这是 find 命令最常见的格式，千万记住 find 的第一个参数是要搜索的地方：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo find /etc/ -name interfaces</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意 find 命令的路径是作为第一个参数的， 基本命令格式为 find [path] [option] [action] 。</strong></p>
+</blockquote>
+<p>与时间相关的命令参数：</p>
+<table><tr><th>参数</th><th>说明</th></tr><tr><td><code>-atime</code></td><td>最后访问时间</td></tr><tr><td><code>-ctime</code></td><td>最后修改文件内容的时间</td></tr><tr><td><code>-mtime</code></td><td>最后修改文件属性的时间</td></tr></table>
+
+<p>下面以 -mtime 参数举例：</p>
+<ul>
+<li>-mtime n：n 为数字，表示为在 n 天之前的“一天之内”修改过的文件</li>
+<li>-mtime +n：列出在 n 天之前（不包含 n 天本身）被修改过的文件</li>
+<li>-mtime -n：列出在 n 天之内（包含 n 天本身）被修改过的文件</li>
+<li>-newer file：file 为一个已存在的文件，列出比 file 还要新的文件名</li>
+</ul>
+<p><img src="/images/linux/5-8.png" alt="Alt text"></p>
+<p>列出 home 目录中，当天（24 小时之内）有改动的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ find ~ -mtime 0</div></pre></td></tr></table></figure>
+<p>列出用户家目录下比 Code 文件夹新的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ find ~ -newer /home/shiyanlou/Code</div></pre></td></tr></table></figure>
+<p>列出在三天前做过改动的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ find ~ -mtime +3</div></pre></td></tr></table></figure>
+<h2 id="文件打包与压缩"><a href="#文件打包与压缩" class="headerlink" title="文件打包与压缩"></a>文件打包与压缩</h2><h3 id="概念讲解"><a href="#概念讲解" class="headerlink" title="概念讲解"></a>概念讲解</h3><p>在讲 Linux 上的压缩工具之前，有必要先了解一下常见常用的压缩包文件格式。在 Windows 上最常见的不外乎这三种 <em>.zip，</em>.rar，<em>.7z 后缀的压缩文件，而在 Linux 上面常见常用的除了以上三种外，还有 </em>.gz，<em>.xz，</em>.bz2，<em>.tar，</em>.tar.gz，<em>.tar.xz，</em>.tar.bz2，简单介绍如下：</p>
+<table><tr><th>文件后缀名</th><th>说明</th></tr><tr><td><code>*.zip</code></td><td>zip 程序打包压缩的文件</td></tr><tr><td><code>*.rar</code></td><td>rar 程序压缩的文件</td></tr><tr><td><code>*.7z</code></td><td>7zip 程序压缩的文件</td></tr><tr><td><code>*.tar</code></td><td>tar 程序打包，未压缩的文件</td></tr><tr><td><code>*.gz</code></td><td>gzip 程序（GNU zip）压缩的文件</td></tr><tr><td><code>*.xz</code></td><td>xz 程序压缩的文件</td></tr><tr><td><code>*.bz2</code></td><td>bzip2 程序压缩的文件</td></tr><tr><td><code>*.tar.gz</code></td><td>tar 打包，gzip 程序压缩的文件</td></tr><tr><td><code>*.tar.bz2</code></td><td>ar 打包，bzip2 程序压缩的文件</td></tr><tr><td><code>*.tar.7z</code></td><td>tar 打包，7z 程序压缩的文件</td></tr></table>
+
+<p>讲了这么多种压缩文件，这么多个命令，不过我们一般只需要掌握几个命令即可，包括 zip，rar，tar。下面会依次介绍这几个命令及对应的解压命令。</p>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><h4 id="zip打包文件与解压文件"><a href="#zip打包文件与解压文件" class="headerlink" title="zip打包文件与解压文件"></a>zip打包文件与解压文件</h4><ul>
+<li>zip：<ul>
+<li>打包 ：zip something.zip something （目录请加 -r 参数）</li>
+<li>解包：unzip something</li>
+<li>指定路径：-d 参数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打包文件</span></div><div class="line">$ zip &lt;打包文件名&gt; &lt;打包文件&gt;</div><div class="line"></div><div class="line"><span class="comment"># 打包文件夹 `-r` 表示递归打包</span></div><div class="line">$ zip -r &lt;打包文件名&gt; &lt;打包文件夹&gt;</div><div class="line"></div><div class="line"><span class="comment"># `-q`安静模式打包</span></div><div class="line">$ zip -q &lt;打包文件名&gt; &lt;打包文件&gt;</div><div class="line"></div><div class="line"><span class="comment"># `-o`表示输出文件</span></div><div class="line">$ zip -r -q -o mZip.zip ~</div><div class="line"></div><div class="line"><span class="comment"># 打包加密文件</span></div><div class="line">$ zip <span class="_">-e</span> -r -q -o mZip.zip ~</div><div class="line"></div><div class="line"><span class="comment"># 如果你想让你在 Linux 创建的 zip 压缩文件在 Windows 上解压后没有任何问题</span></div><div class="line"><span class="comment"># 需要加上 -l 参数将 LF 转换为 CR+LF 来达到以上目的。</span></div><div class="line">$ zip -r <span class="_">-l</span> -o shiyanlou.zip /home/shiyanlou</div></pre></td></tr></table></figure>
+<p><strong>解压文件</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将 shiyanlou.zip 解压到当前目录：</span></div><div class="line">$ unzip shiyanlou.zip</div><div class="line"></div><div class="line"><span class="comment"># 使用安静模式，将文件解压到指定目录：</span></div><div class="line">$ unzip -q shiyanlou.zip <span class="_">-d</span> ziptest</div><div class="line"></div><div class="line"><span class="comment">#指定编码类型,Linux默认的是UTF-8吗，如果有中文的话，会出现中文乱码的现象。 `-O` 参数指定解压编码</span></div><div class="line">$ unzip -O GBK 中文压缩文件.zip</div></pre></td></tr></table></figure></p>
+<h4 id="rar-打包压缩命令"><a href="#rar-打包压缩命令" class="headerlink" title="rar 打包压缩命令"></a>rar 打包压缩命令</h4><p>rar 也是 Windows 上常用的一种压缩文件格式，在 Linux 上可以使用 rar 和 unrar 工具分别创建和解压 rar 压缩包。</p>
+<ul>
+<li>安装 rar 和 unrar 工具：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install rar unrar</div></pre></td></tr></table></figure>
+<ul>
+<li>从指定文件或目录创建压缩包或添加文件到压缩包：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ rm *.zip</div><div class="line">$ rar a shiyanlou.rar .</div></pre></td></tr></table></figure>
+<p>上面的命令使用 a 参数添加一个目录 ～ 到一个归档文件中，如果该文件不存在就会自动创建。</p>
+<p><strong>注意：rar 的命令参数没有 -，如果加上会报错。</strong></p>
+<ul>
+<li>从指定压缩包文件中删除某个文件：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rar d shiyanlou.rar .zshrc</div></pre></td></tr></table></figure>
+<ul>
+<li>查看不解压文件：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rar l shiyanlou.rar</div></pre></td></tr></table></figure>
+<ul>
+<li>使用 unrar 解压 rar 文件</li>
+</ul>
+<p>全路径解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ unrar x shiyanlou.rar</div></pre></td></tr></table></figure>
+<p>去掉路径解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir tmp</div><div class="line">$ unrar e shiyanlou.rar tmp/</div></pre></td></tr></table></figure>
+<p><strong>rar 命令参数非常多，上面只涉及了一些基本操作。</strong></p>
+<h4 id="tar-打包工具"><a href="#tar-打包工具" class="headerlink" title="tar 打包工具"></a>tar 打包工具</h4><ul>
+<li>tar：<ul>
+<li>打包：tar -zcvf something.tar something</li>
+<li>解包：tar -zxvf something.tar</li>
+<li>指定路径：-C 参数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># tar 打包文件</span></div><div class="line">$ tar -zcvf myTar.tar ~</div><div class="line"></div><div class="line"><span class="comment"># tar 解包文件在当前目录</span></div><div class="line"><span class="variable">$tar</span> -zxvf myTar.tar</div><div class="line"></div><div class="line"><span class="comment"># tar 解包文件在指定目录</span></div><div class="line"><span class="variable">$tar</span> -zxvf myTar.tar -C myHome/</div></pre></td></tr></table></figure>
+<p><code>-c</code> 表示创建一个tar包文件,<code>-f</code>用于指定创建的文件名，文件名必须紧跟在<code>-f</code>后面,<code>-x</code>表示解包一个tar文件、</p>
+<h4 id="查看文件大小"><a href="#查看文件大小" class="headerlink" title="查看文件大小"></a>查看文件大小</h4><p>用 du 命令分别查看默认压缩级别、最低、最高压缩级别及未压缩的文件的大小：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看文件大小</span></div><div class="line">$ du mytext.txt</div><div class="line"></div><div class="line"><span class="comment"># 查看目录大小</span></div><div class="line">$ du ~</div><div class="line"></div><div class="line"><span class="comment"># `-h` 带单位输出</span></div><div class="line">$ du -h mttext.txt</div><div class="line"></div><div class="line"><span class="comment"># 同时查看文件大小和目录大小,并进行排序操作</span></div><div class="line">$ du -h myTest.zip ~ |sort</div></pre></td></tr></table></figure>
+<p><strong>学累了，学疲了。休息···等我有心情之后在来更新笔记哈</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;Linux简介&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;相对于现在的 Windows 系统，UNIX/Linux 本身是没有图形界面的，我们通常在 UNIX/Linux 发行版上看到的图形界面实际都只是运行在 Linux 系统之上的一套软件，类似 Windows95 之前的 Windows 的图形界面实则也只是运行在 DOS 环境的一套软件。
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>vue-router 学习笔记</title>
@@ -100,7 +557,7 @@
     <link href="http://yoursite.com/2017/03/30/vuex%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
     <id>http://yoursite.com/2017/03/30/vuex初体验/</id>
     <published>2017-03-30T07:16:46.000Z</published>
-    <updated>2017-03-30T10:45:21.069Z</updated>
+    <updated>2017-07-19T08:10:14.001Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;vue将一个项目分成N多个组件，组件与组件之间相结合，就构成了一个完整的项目，但是当组件足够多的时候，组件与组件之前的通讯将会变得异常复杂、但是用Vuex就会完全不一样、下面这个例子是一个非常简单的例子，在组件A中改变值，组件B中相对应的更新值。</p>
 <h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p>使用<a href="https://wangqilinqqq.github.io/2017/03/30/vue创建项目/" title="title" target="_blank" rel="external">Vue-cli新建项目</a></p>
@@ -141,10 +598,10 @@
     
     </summary>
     
-      <category term="Vuex" scheme="http://yoursite.com/categories/Vuex/"/>
+      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
     
     
-      <category term="Vuex" scheme="http://yoursite.com/tags/Vuex/"/>
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
     
   </entry>
   
